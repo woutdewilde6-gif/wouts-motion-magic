@@ -9,7 +9,7 @@ import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
 
 const projects = [
-  { img: portfolio1, title: "Skyline at Golden Hour", category: "Drone", videoUrl: "" },
+  { img: portfolio1, title: "Skyline at Golden Hour", category: "Drone", videoUrl: "https://youtu.be/grmlV73ndAs" },
   { img: portfolio2, title: "Love in the Dark", category: "Bruiloft", videoUrl: "" },
   { img: portfolio3, title: "Product Showcase", category: "Commercial", videoUrl: "" },
   { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "" },
