@@ -15,7 +15,8 @@ const videoTypes: { value: VideoType; label: string; base: number }[] = [
 
 const PriceCalculator = () => {
   const [type, setType] = useState<VideoType>("commercial");
-  const [duration, setDuration] = useState(2); // minuten eindresultaat
+  const [duration, setDuration] = useState(2);
+  const [videoCount, setVideoCount] = useState(3);
   const [shootDays, setShootDays] = useState(1);
   const [colorGrading, setColorGrading] = useState(false);
   const [drone, setDrone] = useState(false);
