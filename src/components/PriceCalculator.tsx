@@ -15,7 +15,8 @@ const videoTypes: { value: VideoType; label: string; base: number }[] = [
 
 const PriceCalculator = () => {
   const [type, setType] = useState<VideoType>("commercial");
-  const [duration, setDuration] = useState(2); // minuten eindresultaat
+  const [duration, setDuration] = useState(2);
+  const [videoCount, setVideoCount] = useState(3);
   const [shootDays, setShootDays] = useState(1);
   const [colorGrading, setColorGrading] = useState(false);
   const [drone, setDrone] = useState(false);
@@ -23,12 +24,16 @@ const PriceCalculator = () => {
   const price = useMemo(() => {
     const selected = videoTypes.find((v) => v.value === type)!;
     let total = selected.base;
-    total += (duration - 1) * 120;
+    if (type === "social") {
+      total += (videoCount - 1) * 150;
+    } else {
+      total += (duration - 1) * 120;
+    }
     total += (shootDays - 1) * 350;
     if (colorGrading) total += 150;
     if (drone) total += 200;
     return total;
-  }, [type, duration, shootDays, colorGrading, drone]);
+  }, [type, duration, videoCount, shootDays, colorGrading, drone]);
 
   return (
     <section id="pricing" className="py-24 bg-background">
@@ -81,25 +86,46 @@ const PriceCalculator = () => {
               </div>
             </div>
 
-            {/* Duration */}
-            <div>
-              <label className="flex items-center gap-2 text-sm font-display font-medium text-foreground mb-3">
-                <Clock size={16} className="text-primary" />
-                Videoduur: {duration} {duration === 1 ? "minuut" : "minuten"}
-              </label>
-              <input
-                type="range"
-                min={1}
-                max={15}
-                value={duration}
-                onChange={(e) => setDuration(Number(e.target.value))}
-                className="w-full accent-primary"
-              />
-              <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                <span>1 min</span>
-                <span>15 min</span>
+            {/* Duration or Video Count */}
+            {type === "social" ? (
+              <div>
+                <label className="flex items-center gap-2 text-sm font-display font-medium text-foreground mb-3">
+                  <Film size={16} className="text-primary" />
+                  Aantal video's: {videoCount}
+                </label>
+                <input
+                  type="range"
+                  min={1}
+                  max={20}
+                  value={videoCount}
+                  onChange={(e) => setVideoCount(Number(e.target.value))}
+                  className="w-full accent-primary"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                  <span>1 video</span>
+                  <span>20 video's</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div>
+                <label className="flex items-center gap-2 text-sm font-display font-medium text-foreground mb-3">
+                  <Clock size={16} className="text-primary" />
+                  Videoduur: {duration} {duration === 1 ? "minuut" : "minuten"}
+                </label>
+                <input
+                  type="range"
+                  min={1}
+                  max={15}
+                  value={duration}
+                  onChange={(e) => setDuration(Number(e.target.value))}
+                  className="w-full accent-primary"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                  <span>1 min</span>
+                  <span>15 min</span>
+                </div>
+              </div>
+            )}
 
             {/* Shoot days */}
             <div>
