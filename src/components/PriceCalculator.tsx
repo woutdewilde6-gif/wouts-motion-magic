@@ -24,12 +24,16 @@ const PriceCalculator = () => {
   const price = useMemo(() => {
     const selected = videoTypes.find((v) => v.value === type)!;
     let total = selected.base;
-    total += (duration - 1) * 120;
+    if (type === "social") {
+      total += (videoCount - 1) * 150;
+    } else {
+      total += (duration - 1) * 120;
+    }
     total += (shootDays - 1) * 350;
     if (colorGrading) total += 150;
     if (drone) total += 200;
     return total;
-  }, [type, duration, shootDays, colorGrading, drone]);
+  }, [type, duration, videoCount, shootDays, colorGrading, drone]);
 
   return (
     <section id="pricing" className="py-24 bg-background">
