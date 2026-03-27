@@ -1,7 +1,25 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, ArrowUpRight, Send, CheckCircle } from "lucide-react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", type: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // mailto fallback
+    const subject = encodeURIComponent(`Aanvraag: ${formData.type || "Project"}`);
+    const body = encodeURIComponent(
+      `Naam: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.type}\n\n${formData.message}`
+    );
+    window.open(`mailto:info@woutvisuals.nl?subject=${subject}&body=${body}`);
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
+  };
+
+  const projectTypes = ["Bruiloft", "Commercial", "Muziekvideo", "Evenement", "Social Media", "Documentaire"];
+
   return (
     <section id="contact" className="py-24 bg-card">
       <div className="container mx-auto px-4">
@@ -17,74 +35,159 @@ const Contact = () => {
           <h2 className="font-display text-4xl md:text-5xl font-bold">
             Laten we samenwerken
           </h2>
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+            Vertel me over je project en ik neem zo snel mogelijk contact op.
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto"
-        >
-          <div className="grid sm:grid-cols-2 gap-6 mb-12">
-            <a
-              href="mailto:info@woutvisuals.nl"
-              className="flex items-center gap-4 p-5 rounded-lg bg-secondary hover:bg-border transition-colors group"
-            >
-              <Mail size={20} className="text-primary" />
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-10">
+          {/* Form — 3 cols */}
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 space-y-5"
+          >
+            <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-muted-foreground">Email</p>
-                <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                  info@woutvisuals.nl
-                </p>
+                <label className="block text-sm font-display font-medium text-foreground mb-2">Naam</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Je naam"
+                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
+                />
               </div>
-            </a>
-            <a
-              href="tel:+31612345678"
-              className="flex items-center gap-4 p-5 rounded-lg bg-secondary hover:bg-border transition-colors group"
-            >
-              <Phone size={20} className="text-primary" />
               <div>
-                <p className="text-sm text-muted-foreground">Telefoon</p>
-                <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                  +31 6 12345678
-                </p>
-              </div>
-            </a>
-            <div className="flex items-center gap-4 p-5 rounded-lg bg-secondary">
-              <MapPin size={20} className="text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Locatie</p>
-                <p className="text-sm font-medium text-foreground">
-                  Nederland
-                </p>
+                <label className="block text-sm font-display font-medium text-foreground mb-2">Email</label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="je@email.nl"
+                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
+                />
               </div>
             </div>
+
+            <div>
+              <label className="block text-sm font-display font-medium text-foreground mb-2">Type project</label>
+              <div className="flex flex-wrap gap-2">
+                {projectTypes.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => setFormData({ ...formData, type: t })}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                      formData.type === t
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-secondary-foreground hover:bg-border"
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-display font-medium text-foreground mb-2">Bericht</label>
+              <textarea
+                required
+                rows={4}
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Vertel over je project, gewenste datum, stijl..."
+                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:opacity-90 transition-opacity glow w-full sm:w-auto justify-center"
+            >
+              {submitted ? (
+                <>
+                  <CheckCircle size={18} />
+                  Verstuurd!
+                </>
+              ) : (
+                <>
+                  <Send size={18} />
+                  Verstuur bericht
+                </>
+              )}
+            </button>
+          </motion.form>
+
+          {/* Info — 2 cols */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 space-y-4"
+          >
+            <div className="bg-secondary/50 border border-border rounded-xl p-6 space-y-5">
+              <h3 className="font-display font-semibold text-foreground">Direct contact</h3>
+
+              <a
+                href="mailto:info@woutvisuals.nl"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Mail size={18} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">info@woutvisuals.nl</p>
+                  <p className="text-xs text-muted-foreground">Email</p>
+                </div>
+              </a>
+
+              <a
+                href="tel:+31612345678"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Phone size={18} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">+31 6 12345678</p>
+                  <p className="text-xs text-muted-foreground">Telefoon</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <MapPin size={18} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-foreground font-medium">Nederland</p>
+                  <p className="text-xs text-muted-foreground">Locatie</p>
+                </div>
+              </div>
+            </div>
+
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-5 rounded-lg bg-secondary hover:bg-border transition-colors group"
+              className="flex items-center gap-3 bg-secondary/50 border border-border rounded-xl p-5 hover:border-primary/50 transition-colors group"
             >
-              <Instagram size={20} className="text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Instagram</p>
-                <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors flex items-center gap-1">
-                  @woutvisuals <ArrowUpRight size={14} />
-                </p>
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Instagram size={18} className="text-primary" />
               </div>
+              <div className="flex-1">
+                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@woutvisuals</p>
+                <p className="text-xs text-muted-foreground">Volg op Instagram</p>
+              </div>
+              <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
-          </div>
-
-          <div className="text-center">
-            <a
-              href="mailto:info@woutvisuals.nl"
-              className="inline-flex items-center gap-2 px-10 py-4 rounded-md bg-primary text-primary-foreground font-display font-semibold hover:opacity-90 transition-opacity glow"
-            >
-              <Mail size={18} />
-              Stuur een bericht
-            </a>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Footer */}
