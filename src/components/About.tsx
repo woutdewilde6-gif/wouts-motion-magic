@@ -24,7 +24,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-display mb-3">
             Over mij
