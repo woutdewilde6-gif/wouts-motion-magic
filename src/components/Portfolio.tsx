@@ -182,12 +182,10 @@ const Portfolio = () => {
                     <span className="text-sm font-medium text-foreground">{activeProject.stats.likes}</span>
                     <span className="text-xs">likes</span>
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground flex-1">
+                  <div className="flex items-center gap-2 text-muted-foreground">
                     <TrendingUp size={16} />
                     <span className="text-sm font-medium text-foreground">{activeProject.stats.exposure}%</span>
-                    <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden max-w-[120px]">
-                      <div className="h-full bg-primary rounded-full" style={{ width: `${Math.min(activeProject.stats.exposure * 5, 100)}%` }} />
-                    </div>
+                    <span className="text-xs">exposure</span>
                   </div>
                 </div>
               )}
