@@ -42,7 +42,13 @@ const projects: {
     format: "portrait",
     stats: { views: "33.702", likes: "641", exposure: 2.0 },
   },
-  { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
+  {
+    img: portfolio4,
+    title: "Simba Marketing",
+    category: "Behind The Scenes",
+    videoUrl: "https://vimeo.com/1179372802?fl=tl&fe=ec",
+    format: "portrait",
+  },
   {
     img: portfolio5,
     title: "Kaluno",
@@ -51,11 +57,11 @@ const projects: {
     format: "landscape",
     stats: { views: "1.342", likes: "75", exposure: 6.7 },
   },
-  { 
-    img: portfolio6, 
-    title: "Steven Grosveld MCE Aftermovie", 
-    category: "Evenement", 
-    videoUrl: "https://vimeo.com/1179357991?fl=tl&fe=ec", 
+  {
+    img: portfolio6,
+    title: "Steven Grosveld MCE Aftermovie",
+    category: "Evenement",
+    videoUrl: "https://vimeo.com/1179357991?fl=tl&fe=ec",
     format: "portrait",
     stats: { views: "3.583", likes: "112", exposure: 3.5 },
   },
