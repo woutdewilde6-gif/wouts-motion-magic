@@ -171,37 +171,41 @@ const Contact = () => {
               </div>
             </div>
 
-            <a
-              href="https://www.instagram.com/dewildemedia.nl/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-secondary/50 border border-border rounded-xl p-5 hover:border-primary/50 transition-colors group"
-            >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Instagram size={18} className="text-primary" />
-              </div>
-              <div className="flex-1">
-                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@dewildemedia.nl</p>
-                <p className="text-xs text-muted-foreground">Volg op Instagram</p>
-              </div>
-              <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
+            <div className="bg-secondary/50 border border-border rounded-xl p-6 space-y-5">
+              <h3 className="font-display font-semibold text-foreground">Socials</h3>
 
-            <a
-              href="https://www.linkedin.com/in/wout-de-wilde/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-secondary/50 border border-border rounded-xl p-5 hover:border-primary/50 transition-colors group"
-            >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Linkedin size={18} className="text-primary" />
-              </div>
-              <div className="flex-1">
-                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">Wout de Wilde</p>
-                <p className="text-xs text-muted-foreground">Verbind op LinkedIn</p>
-              </div>
-              <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
+              <a
+                href="https://www.instagram.com/dewildemedia.nl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Instagram size={18} className="text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">@dewildemedia.nl</p>
+                  <p className="text-xs text-muted-foreground">Instagram</p>
+                </div>
+                <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/wout-de-wilde/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Linkedin size={18} className="text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">Wout de Wilde</p>
+                  <p className="text-xs text-muted-foreground">LinkedIn</p>
+                </div>
+                <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

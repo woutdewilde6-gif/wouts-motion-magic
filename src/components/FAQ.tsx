@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "Kan ik ook korte content voor social media laten maken?",
     answer:
-      "Zeker! Ik maak regelmatig short-form content voor TikTok, Instagram Reels en YouTube Shorts. Dit kan als los project of als aanvulling op een grotere productie.",
+      "Zeker! Ik maak regelmatig short-form content voor TikTok, Instagram Reels en YouTube Shorts. Dit kan als los project of als extra naast een andere video.",
   },
   {
     question: "Werk je ook buiten de regio?",
