@@ -77,6 +77,7 @@ const projects: {
     category: "Commercial",
     videoUrl: "https://vimeo.com/1179374565?fl=ip&fe=ec",
     format: "portrait",
+    services: ["Editen"],
   },
   {
     img: portfolio7,
