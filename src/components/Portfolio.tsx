@@ -89,6 +89,14 @@ const projects: {
     format: "landscape",
     // stats: { views: "11.592", likes: "66", exposure: 2.7 },
   },
+  {
+    img: portfolioStevenTiktok,
+    title: "Steven Grosveld Tiktok",
+    category: "Entertainment",
+    videoUrl: "https://vimeo.com/1179379930",
+    format: "portrait",
+    stats: { views: "325.402", likes: "15.742", exposure: 0 },
+  },
 ];
 
 function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | null {
