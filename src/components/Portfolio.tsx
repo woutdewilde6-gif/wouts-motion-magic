@@ -227,7 +227,7 @@ const Portfolio = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
