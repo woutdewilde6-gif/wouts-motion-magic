@@ -89,6 +89,13 @@ const projects: {
     format: "landscape",
     stats: { views: "11.592", likes: "66", exposure: 2.7 },
   },
+  {
+    img: portfolioTafelaar,
+    title: "De Tafelaar Amersfoort",
+    category: "Commercial",
+    videoUrl: "https://vimeo.com/1179374565",
+    format: "portrait",
+  },
 ];
 
 function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | null {
