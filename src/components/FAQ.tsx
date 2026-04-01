@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "Wat kost een video?",
     answer:
-      "Dat hangt af van het type video, de lengte en wat er precies bij komt kijken. Stuur me gerust een berichtje, dan kijk ik wat de mogelijkheden zijn!",
+      "Dat verschilt per project en hangt af van het type video, de lengte en wat er bij komt kijken. Neem gerust contact op, dan bespreek ik graag de mogelijkheden met je!",
   },
   {
     question: "Hoe lang duurt het voordat mijn video klaar is?",
@@ -36,7 +36,7 @@ const faqs = [
   {
     question: "Hoeveel revisierondes zijn inbegrepen?",
     answer:
-      "Standaard zijn er 2 revisierondes inbegrepen. Extra aanpassingen zijn uiteraard mogelijk en worden vooraf besproken.",
+      "De eerste revisieronde is altijd gratis. Extra aanpassingen zijn uiteraard mogelijk en worden vooraf besproken.",
   },
 ];
 
