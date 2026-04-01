@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+import aboutPhoto from "@/assets/about-photo.jpg";
 
 const timeline = [
   { year: "2021", text: "Begonnen met video editing" },
@@ -36,7 +36,7 @@ const About = () => {
           >
             <div className="rounded-2xl overflow-hidden border border-border card-shadow">
               <img
-                src={heroBg}
+                src={aboutPhoto}
                 alt="Wout de Wilde"
                 className="w-full aspect-square object-cover grayscale"
               />
