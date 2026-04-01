@@ -13,7 +13,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Naam: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.type}\n\n${formData.message}`
     );
-    window.open(`mailto:info@woutvisuals.nl?subject=${subject}&body=${body}`);
+    window.open(`mailto:info@dewildemedia.nl?subject=${subject}&body=${body}`);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
   };
