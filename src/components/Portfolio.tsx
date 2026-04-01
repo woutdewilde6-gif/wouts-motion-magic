@@ -28,10 +28,11 @@ const projects: {
 }[] = [
   {
     img: portfolio1,
-    title: "Skyline at Golden Hour",
-    category: "Drone",
-    videoUrl: "https://youtu.be/grmlV73ndAs",
+    title: "Steven Grosveld",
+    category: "Entertainment",
+    videoUrl: "https://youtu.be/kJ48LtGEmgY?si=YosH9h2KwVQkpvok",
     format: "landscape",
+    stats: { views: "11.720", likes: "274", exposure: 2.5 },
   },
   {
     img: portfolio2,
@@ -39,6 +40,7 @@ const projects: {
     category: "Entertainment",
     videoUrl: "https://youtu.be/VIEXefxEHco?si=pbDIxpw-85_PshF5",
     format: "landscape",
+    stats: { views: "11.592", likes: "66", exposure: 2.7 },
   },
   {
     img: portfolio3,
