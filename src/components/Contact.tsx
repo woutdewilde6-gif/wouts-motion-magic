@@ -181,7 +181,7 @@ const Contact = () => {
                 <Instagram size={18} className="text-primary" />
               </div>
               <div className="flex-1">
-                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@woutvisuals</p>
+                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@dewildemedia</p>
                 <p className="text-xs text-muted-foreground">Volg op Instagram</p>
               </div>
               <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
