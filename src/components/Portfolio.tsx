@@ -24,6 +24,7 @@ const projects: {
   category: string;
   videoUrl: string;
   format: ProjectFormat;
+  services: ("Editen" | "Filmen")[];
   stats?: ProjectStats;
 }[] = [
   {
@@ -32,6 +33,7 @@ const projects: {
     category: "Entertainment",
     videoUrl: "https://youtu.be/kJ48LtGEmgY?si=YosH9h2KwVQkpvok",
     format: "landscape",
+    services: ["Editen"],
     stats: { views: "11.720", likes: "274", exposure: 2.5 },
   },
   {
@@ -40,6 +42,7 @@ const projects: {
     category: "Commercial",
     videoUrl: "https://vimeo.com/1179367811?fl=tl&fe=ec",
     format: "portrait",
+    services: ["Editen"],
     stats: { views: "33.702", likes: "641", exposure: 2.0 },
   },
   {
@@ -48,6 +51,7 @@ const projects: {
     category: "Behind The Scenes",
     videoUrl: "https://vimeo.com/1179372802?fl=tl&fe=ec",
     format: "portrait",
+    services: ["Editen"],
   },
   {
     img: portfolio5,
@@ -55,6 +59,7 @@ const projects: {
     category: "Entertainment",
     videoUrl: "https://youtu.be/axew6Qdy3jU?si=5V3-Qn2SCLpGhbiX",
     format: "landscape",
+    services: ["Editen"],
     stats: { views: "1.342", likes: "75", exposure: 6.7 },
   },
   {
@@ -63,6 +68,7 @@ const projects: {
     category: "Evenement",
     videoUrl: "https://vimeo.com/1179357991?fl=tl&fe=ec",
     format: "portrait",
+    services: ["Editen", "Filmen"],
     stats: { views: "3.583", likes: "112", exposure: 3.5 },
   },
   {
@@ -71,6 +77,7 @@ const projects: {
     category: "Commercial",
     videoUrl: "https://vimeo.com/1179374565?fl=ip&fe=ec",
     format: "portrait",
+    services: ["Editen"],
   },
   {
     img: portfolio7,
@@ -78,6 +85,7 @@ const projects: {
     category: "Evenement",
     videoUrl: "https://vimeo.com/1179358045",
     format: "landscape",
+    services: ["Editen", "Filmen"],
     stats: { views: "3.211", likes: "66", exposure: 2.1 },
   },
   {
@@ -86,6 +94,7 @@ const projects: {
     category: "Entertainment",
     videoUrl: "https://youtu.be/qjF7oDGKolw?si=yv_izNLr51U2u0c3",
     format: "landscape",
+    services: ["Editen"],
     // stats: { views: "11.592", likes: "66", exposure: 2.7 },
   },
 ];
@@ -156,10 +165,16 @@ const Portfolio = () => {
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="text-xs uppercase tracking-wider text-primary font-display">
-                      {project.category}
-                    </span>
-                    <h3 className="font-display text-sm md:text-lg font-semibold text-foreground mt-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs uppercase tracking-wider text-primary font-display">
+                        {project.category}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground">•</span>
+                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-display">
+                        {project.services.join(" & ")}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-sm md:text-lg font-semibold text-foreground">
                       {project.title}
                     </h3>
                   </div>
@@ -253,9 +268,15 @@ const Portfolio = () => {
               {/* Info bar */}
               <div className="p-6 flex items-center justify-between">
                 <div>
-                  <span className="text-xs uppercase tracking-wider text-primary font-display">
-                    {activeProject.category}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs uppercase tracking-wider text-primary font-display">
+                      {activeProject.category}
+                    </span>
+                    <span className="text-xs text-muted-foreground">•</span>
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-display">
+                      {activeProject.services.join(" & ")}
+                    </span>
+                  </div>
                   <h3 className="font-display text-xl font-semibold text-foreground mt-1">{activeProject.title}</h3>
                 </div>
                 <a
