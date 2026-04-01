@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram, ArrowUpRight, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Linkedin, ArrowUpRight, Send, CheckCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", type: "", message: "" });
@@ -148,14 +148,14 @@ const Contact = () => {
               </a>
 
               <a
-                href="tel:+31612345678"
+                href="tel:+31636451513"
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Phone size={18} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">+31 6 12345678</p>
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">+31 6 36451513</p>
                   <p className="text-xs text-muted-foreground">Telefoon</p>
                 </div>
               </a>
@@ -165,14 +165,14 @@ const Contact = () => {
                   <MapPin size={18} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-foreground font-medium">Nederland</p>
+                  <p className="text-foreground font-medium">Deventer, Nederland</p>
                   <p className="text-xs text-muted-foreground">Locatie</p>
                 </div>
               </div>
             </div>
 
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/dewildemedia.nl/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 bg-secondary/50 border border-border rounded-xl p-5 hover:border-primary/50 transition-colors group"
@@ -181,8 +181,24 @@ const Contact = () => {
                 <Instagram size={18} className="text-primary" />
               </div>
               <div className="flex-1">
-                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@dewildemedia</p>
+                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@dewildemedia.nl</p>
                 <p className="text-xs text-muted-foreground">Volg op Instagram</p>
+              </div>
+              <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/wout-de-wilde/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-secondary/50 border border-border rounded-xl p-5 hover:border-primary/50 transition-colors group"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Linkedin size={18} className="text-primary" />
+              </div>
+              <div className="flex-1">
+                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">Wout de Wilde</p>
+                <p className="text-xs text-muted-foreground">Verbind op LinkedIn</p>
               </div>
               <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
