@@ -53,14 +53,14 @@ const projects: {
   { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
   {
-    img: portfolio7,
+    img: portfolio8,
     title: "Festival Vibes",
     category: "Evenement",
     videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/",
     format: "landscape",
   },
   {
-    img: portfolio8,
+    img: portfolio7,
     title: "Show Steven Grosveld",
     category: "Evenement",
     videoUrl: "https://vimeo.com/1179358045",
