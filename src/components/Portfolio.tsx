@@ -8,13 +8,15 @@ import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
 
-const projects = [
-  { img: portfolio1, title: "Skyline at Golden Hour", category: "Drone", videoUrl: "https://youtu.be/grmlV73ndAs" },
-  { img: portfolio2, title: "Love in the Dark", category: "Bruiloft", videoUrl: "" },
-  { img: portfolio3, title: "Product Showcase", category: "Commercial", videoUrl: "" },
-  { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "" },
-  { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "" },
-  { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "" },
+type ProjectFormat = "landscape" | "portrait";
+
+const projects: { img: string; title: string; category: string; videoUrl: string; format: ProjectFormat }[] = [
+  { img: portfolio1, title: "Skyline at Golden Hour", category: "Drone", videoUrl: "https://youtu.be/grmlV73ndAs", format: "landscape" },
+  { img: portfolio2, title: "Love in the Dark", category: "Bruiloft", videoUrl: "", format: "landscape" },
+  { img: portfolio3, title: "Product Showcase", category: "Commercial", videoUrl: "", format: "portrait" },
+  { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
+  { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
+  { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
 ];
 
 function getEmbedUrl(url: string): string | null {
