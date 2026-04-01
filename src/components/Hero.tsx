@@ -89,10 +89,10 @@ const Hero = () => {
             Bekijk mijn werk
           </a>
           <a
-            href="#pricing"
+            href="#contact"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-md border border-border text-foreground font-display font-semibold text-sm hover:border-primary hover:text-primary transition-colors"
           >
-            Bereken je prijs
+            Neem contact op
           </a>
         </motion.div>
       </div>
