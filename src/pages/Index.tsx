@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Reviews from "@/components/Reviews";
-import PriceCalculator from "@/components/PriceCalculator";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 
 const Index = () => {
