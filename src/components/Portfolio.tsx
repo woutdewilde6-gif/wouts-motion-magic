@@ -7,6 +7,7 @@ import portfolio3 from "@/assets/portfolio-3.jpg";
 import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
+import portfolio7 from "@/assets/portfolio-7.jpg";
 
 type ProjectFormat = "landscape" | "portrait";
 
@@ -17,6 +18,7 @@ const projects: { img: string; title: string; category: string; videoUrl: string
   { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
   { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
+  { img: portfolio7, title: "Festival Vibes", category: "Evenement", videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/", format: "landscape" },
 ];
 
 function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | null {
