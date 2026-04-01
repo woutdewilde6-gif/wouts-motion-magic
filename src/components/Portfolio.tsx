@@ -9,7 +9,6 @@ import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
 import portfolio7 from "@/assets/portfolio-7.jpg";
 import portfolio8 from "@/assets/portfolio-8.jpg";
-import portfolioStevenTiktok from "@/assets/portfolio-new-portrait.jpg";
 
 type ProjectFormat = "landscape" | "portrait";
 
@@ -66,13 +65,13 @@ const projects: {
     format: "portrait",
     stats: { views: "3.583", likes: "112", exposure: 3.5 },
   },
-  {
-    img: portfolio8,
-    title: "Festival Vibes",
-    category: "Evenement",
-    videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/",
-    format: "landscape",
-  },
+  // {
+  //   img: portfolio8,
+  //   title: "Festival Vibes",
+  //   category: "Evenement",
+  //   videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/",
+  //   format: "landscape",
+  // },
   {
     img: portfolio7,
     title: "Steven Grosveld Show Aftermovie",
@@ -88,14 +87,6 @@ const projects: {
     videoUrl: "https://youtu.be/qjF7oDGKolw?si=yv_izNLr51U2u0c3",
     format: "landscape",
     // stats: { views: "11.592", likes: "66", exposure: 2.7 },
-  },
-  {
-    img: portfolioStevenTiktok,
-    title: "Steven Grosveld Tiktok",
-    category: "Entertainment",
-    videoUrl: "https://vimeo.com/1179379930",
-    format: "portrait",
-    stats: { views: "325.402", likes: "15.742", exposure: 5.1 },
   },
 ];
 
