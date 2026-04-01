@@ -5,7 +5,7 @@ const timeline = [
   { year: "2021", text: "Begonnen met video editing" },
   { year: "2022", text: "Eerste social media klant" },
   { year: "2024", text: "Bedrijf opgericht bij de KVK" },
-  { year: "2025", text: "Begonnen met filmen" },
+  { year: "2025", text: "Begonnen met videografie" },
 ];
 
 const About = () => {
