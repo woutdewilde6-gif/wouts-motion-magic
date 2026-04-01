@@ -42,6 +42,7 @@ const projects: {
     category: "Commercial",
     videoUrl: "https://vimeo.com/1179367811?fl=tl&fe=ec",
     format: "portrait",
+    services: ["Editen"],
     stats: { views: "33.702", likes: "641", exposure: 2.0 },
   },
   {
