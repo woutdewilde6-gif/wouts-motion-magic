@@ -51,7 +51,13 @@ const projects: {
     stats: { views: "33.702", likes: "641", exposure: 2.0 },
   },
   { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
-  { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
+  {
+    img: portfolio5,
+    title: "Kaluno",
+    category: "Entertainment",
+    videoUrl: "https://youtu.be/axew6Qdy3jU?si=5V3-Qn2SCLpGhbiX",
+    format: "landscape",
+  },
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
   {
     img: portfolio8,
