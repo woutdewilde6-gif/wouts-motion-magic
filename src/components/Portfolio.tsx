@@ -51,7 +51,14 @@ const projects: {
     format: "landscape",
     stats: { views: "1.342", likes: "75", exposure: 6.7 },
   },
-  { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
+  { 
+    img: portfolio6, 
+    title: "Steven Grosveld MCE Aftermovie", 
+    category: "Evenement", 
+    videoUrl: "https://vimeo.com/1179357991?fl=tl&fe=ec", 
+    format: "portrait" 
+    stats: { views: "3.583", likes: "112", exposure: 3.5 },
+  },
   {
     img: portfolio8,
     title: "Festival Vibes",
@@ -61,7 +68,7 @@ const projects: {
   },
   {
     img: portfolio7,
-    title: "Show Steven Grosveld",
+    title: "Steven Grosveld Show Aftermovie",
     category: "Evenement",
     videoUrl: "https://vimeo.com/1179358045",
     format: "landscape",
