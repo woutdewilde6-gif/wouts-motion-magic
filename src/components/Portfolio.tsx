@@ -39,7 +39,7 @@ function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | 
   if (ytMatch) return { type: "iframe", url: `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0` };
   // Vimeo
   const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-  if (vimeoMatch) return { type: "iframe", url: `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1` };
+  if (vimeoMatch) return { type: "iframe", url: `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1&muted=1` };
   // Instagram Reels
   const reelMatch = url.match(/instagram\.com\/reel\/([\w-]+)/);
   if (reelMatch) return { type: "iframe", url: `https://www.instagram.com/reel/${reelMatch[1]}/embed` };
