@@ -1,19 +1,11 @@
 import { motion } from "framer-motion";
-import { Camera, Film, Monitor, Clapperboard } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
-const skills = [
-  { icon: Camera, label: "Sony A7 IV" },
-  { icon: Clapperboard, label: "DJI RS 3 Mini" },
-  { icon: Film, label: "Adobe Premiere Pro" },
-  { icon: Monitor, label: "After Effects" },
-];
 
 const timeline = [
   { year: "2021", text: "Begonnen met video editing" },
   { year: "2022", text: "Eerste social media klant" },
-  { year: "2024", text: "Uitgegroeid met meer klanten en projecten" },
-  { year: "2025", text: "Begonnen met filmen en De Wilde Media Producties opgericht" },
+  { year: "2024", text: "Bedrijf opgericht bij de KVK" },
+  { year: "2025", text: "Begonnen met filmen" },
 ];
 
 const About = () => {
@@ -40,13 +32,13 @@ const About = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative mx-auto w-full max-w-sm"
           >
             <div className="rounded-2xl overflow-hidden border border-border card-shadow">
               <img
                 src={heroBg}
                 alt="Wout de Wilde"
-                className="w-full aspect-[3/4] object-cover"
+                className="w-full aspect-square object-cover grayscale"
               />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-5 py-2 rounded-lg font-display font-bold text-sm">
@@ -54,7 +46,7 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Tekst */}
+          {/* Tekst + Tijdlijn */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -67,25 +59,6 @@ const About = () => {
               Wat begon als een hobby is uitgegroeid tot mijn eigen bedrijf: De Wilde Media Producties.
             </p>
 
-            {/* Skills */}
-            <div>
-              <h3 className="font-display font-semibold text-foreground mb-3">
-                Mijn tools
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                {skills.map((skill) => (
-                  <div
-                    key={skill.label}
-                    className="flex items-center gap-3 bg-background/60 border border-border rounded-lg px-4 py-3"
-                  >
-                    <skill.icon size={18} className="text-primary shrink-0" />
-                    <span className="text-sm text-foreground">{skill.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Tijdlijn */}
             <div>
               <h3 className="font-display font-semibold text-foreground mb-3">
                 Mijn pad
