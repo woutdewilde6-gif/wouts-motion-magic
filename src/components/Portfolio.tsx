@@ -95,7 +95,7 @@ const projects: {
     category: "Entertainment",
     videoUrl: "https://vimeo.com/1179379930",
     format: "portrait",
-    stats: { views: "325.402", likes: "15.742", exposure: 0 },
+    stats: { views: "325.402", likes: "15.742", exposure: 5.1 },
   },
 ];
 
