@@ -65,13 +65,13 @@ const projects: {
     format: "portrait",
     stats: { views: "3.583", likes: "112", exposure: 3.5 },
   },
-  // {
-  //   img: portfolio8,
-  //   title: "Festival Vibes",
-  //   category: "Evenement",
-  //   videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/",
-  //   format: "landscape",
-  // },
+  {
+    img: portfolio8,
+    title: "De Tafelaar Amersfoort",
+    category: "Commercial",
+    videoUrl: "https://vimeo.com/1179374565?fl=ip&fe=ec",
+    format: "portrait",
+  },
   {
     img: portfolio7,
     title: "Steven Grosveld Show Aftermovie",
