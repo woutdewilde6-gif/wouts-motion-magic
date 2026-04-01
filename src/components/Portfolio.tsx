@@ -44,10 +44,11 @@ const projects: {
   },
   {
     img: portfolio3,
-    title: "Product Showcase",
+    title: "The Base Legacy",
     category: "Commercial",
     videoUrl: "https://vimeo.com/1179367811?fl=tl&fe=ec",
     format: "portrait",
+    stats: { views: "33.702", likes: "641", exposure: 2.0 },
   },
   { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
   { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
