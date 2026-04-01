@@ -165,10 +165,16 @@ const Portfolio = () => {
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="text-xs uppercase tracking-wider text-primary font-display">
-                      {project.category}
-                    </span>
-                    <h3 className="font-display text-sm md:text-lg font-semibold text-foreground mt-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs uppercase tracking-wider text-primary font-display">
+                        {project.category}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground">•</span>
+                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-display">
+                        {project.services.join(" & ")}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-sm md:text-lg font-semibold text-foreground">
                       {project.title}
                     </h3>
                   </div>
