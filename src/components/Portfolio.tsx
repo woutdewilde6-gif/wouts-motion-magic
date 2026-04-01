@@ -35,14 +35,6 @@ const projects: {
     stats: { views: "11.720", likes: "274", exposure: 2.5 },
   },
   {
-    img: portfolio2,
-    title: "Steven Grosveld",
-    category: "Entertainment",
-    videoUrl: "https://youtu.be/VIEXefxEHco?si=pbDIxpw-85_PshF5",
-    format: "landscape",
-    stats: { views: "11.592", likes: "66", exposure: 2.7 },
-  },
-  {
     img: portfolio3,
     title: "The Base Legacy",
     category: "Commercial",
@@ -66,6 +58,14 @@ const projects: {
     category: "Evenement",
     videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/",
     format: "landscape",
+  },
+  {
+    img: portfolio2,
+    title: "Steven Grosveld",
+    category: "Entertainment",
+    videoUrl: "https://youtu.be/VIEXefxEHco?si=pbDIxpw-85_PshF5",
+    format: "landscape",
+    stats: { views: "11.592", likes: "66", exposure: 2.7 },
   },
   {
     img: portfolio7,
