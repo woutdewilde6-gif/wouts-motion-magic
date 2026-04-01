@@ -131,13 +131,14 @@ const Portfolio = () => {
 
               {/* Video area */}
               <div className={activeProject.format === "portrait" ? "aspect-[9/16]" : "aspect-video"} style={{ background: "black" }}>
-                {embedUrl ? (
+                {embed ? (
                   <iframe
-                    src={embedUrl}
+                    src={embed.url}
                     className="w-full h-full"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                     title={activeProject.title}
+                    sandbox={embed.type === "tiktok" ? "allow-scripts allow-same-origin allow-popups" : undefined}
                   />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground gap-4">
