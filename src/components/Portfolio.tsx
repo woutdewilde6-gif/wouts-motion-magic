@@ -118,8 +118,19 @@ function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | 
   return null;
 }
 
+const categories = ["Alles", ...Array.from(new Set(projects.map((p) => p.category)))];
+const serviceOptions = ["Alles", "Editen", "Filmen"];
+
 const Portfolio = () => {
   const [activeProject, setActiveProject] = useState<(typeof projects)[0] | null>(null);
+  const [activeCategory, setActiveCategory] = useState("Alles");
+  const [activeService, setActiveService] = useState("Alles");
+
+  const filteredProjects = projects.filter((p) => {
+    const categoryMatch = activeCategory === "Alles" || p.category === activeCategory;
+    const serviceMatch = activeService === "Alles" || p.services.includes(activeService as "Editen" | "Filmen");
+    return categoryMatch && serviceMatch;
+  });
 
   const embed = activeProject ? getEmbedUrl(activeProject.videoUrl) : null;
 
@@ -137,8 +148,43 @@ const Portfolio = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold">Recente projecten</h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[240px]">
-            {projects.map((project, i) => (
+          {/* Filters */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            <div className="flex flex-wrap justify-center gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 rounded-md text-xs uppercase tracking-wider font-display font-semibold transition-colors ${
+                    activeCategory === cat
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="hidden sm:block w-px h-6 bg-border" />
+            <div className="flex flex-wrap justify-center gap-2">
+              {serviceOptions.map((svc) => (
+                <button
+                  key={svc}
+                  onClick={() => setActiveService(svc)}
+                  className={`px-4 py-2 rounded-md text-xs uppercase tracking-wider font-display font-semibold transition-colors ${
+                    activeService === svc
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {svc}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[240px]">
+            {filteredProjects.map((project, i) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -181,7 +227,7 @@ const Portfolio = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
