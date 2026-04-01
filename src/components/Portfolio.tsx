@@ -19,14 +19,20 @@ const projects: { img: string; title: string; category: string; videoUrl: string
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
 ];
 
-function getEmbedUrl(url: string): string | null {
+function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | null {
   if (!url) return null;
+  // TikTok
+  const tiktokMatch = url.match(/tiktok\.com\/@[\w.]+\/video\/(\d+)/);
+  if (tiktokMatch) return { type: "tiktok", url: `https://www.tiktok.com/embed/${tiktokMatch[1]}` };
   // YouTube
-  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
-  if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0`;
+  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+  if (ytMatch) return { type: "iframe", url: `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0` };
   // Vimeo
   const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-  if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`;
+  if (vimeoMatch) return { type: "iframe", url: `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1` };
+  // Instagram Reels
+  const reelMatch = url.match(/instagram\.com\/reel\/([\w-]+)/);
+  if (reelMatch) return { type: "iframe", url: `https://www.instagram.com/reel/${reelMatch[1]}/embed` };
   return null;
 }
 
