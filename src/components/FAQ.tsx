@@ -9,19 +9,19 @@ import {
 
 const faqs = [
   {
-    question: "Wat kost een videoproductie?",
+    question: "Wat kost een video?",
     answer:
-      "De kosten hangen af van het type video, de lengte, het aantal draaidagen en eventuele extra's zoals drone-opnames. Neem gerust contact op voor een vrijblijvende offerte op maat.",
+      "De kosten hangen af van het type video, de lengte en eventuele extra's zoals drone-opnames of motion graphics. Neem gerust contact op voor een vrijblijvende offerte op maat.",
   },
   {
     question: "Hoe lang duurt het voordat mijn video klaar is?",
     answer:
-      "Gemiddeld lever ik een video binnen 1 tot 2 weken na de opnamedag op. Bij grotere projecten zoals documentaires of bruiloften kan dit iets langer duren. We spreken altijd vooraf een deadline af.",
+      "Dat verschilt per project. Korte social media content kan vaak dezelfde dag nog geleverd worden. Bij grotere projecten neem ik graag wat meer tijd om alles tot in de puntjes af te werken — kwaliteit gaat altijd voor. We spreken vooraf altijd een deadline af.",
   },
   {
-    question: "Welke apparatuur gebruik je?",
+    question: "Welke apparatuur en software gebruik je?",
     answer:
-      "Ik werk met professionele cinema-camera's, gimbal-stabilisatie, professionele audio-apparatuur en drone-equipment. Zo garandeer ik altijd de hoogste kwaliteit beeld en geluid.",
+      "Ik film met een Sony A7 IV op een DJI RS 3 Mini gimbal, met een 28-70mm f/2.8 lens. Voor de editing werk ik in Adobe Premiere Pro en gebruik ik After Effects voor motion graphics en visuele effecten.",
   },
   {
     question: "Kan ik ook korte content voor social media laten maken?",
