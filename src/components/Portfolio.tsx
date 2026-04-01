@@ -186,7 +186,7 @@ const Portfolio = () => {
           <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[240px]">
             {filteredProjects.map((project, i) => (
               <motion.div
-                key={project.title}
+                key={`${project.title}-${i}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
