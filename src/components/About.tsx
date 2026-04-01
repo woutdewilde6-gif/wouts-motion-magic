@@ -34,7 +34,7 @@ const About = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto">
           {/* Foto */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
