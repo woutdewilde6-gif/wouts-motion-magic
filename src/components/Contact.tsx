@@ -135,7 +135,7 @@ const Contact = () => {
               <h3 className="font-display font-semibold text-foreground">Direct contact</h3>
 
               <a
-                href="mailto:info@woutvisuals.nl"
+                href="mailto:info@dewildemedia.nl"
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
