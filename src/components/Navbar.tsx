@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "Over mij", href: "#about" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Reviews", href: "#reviews" },
   { label: "FAQ", href: "#faq" },
