@@ -1,19 +1,45 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Play, ChevronDown } from "lucide-react";
+import { Play, ChevronDown, Volume2, VolumeX } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
+// Set your hero background video URL here (YouTube embed, mp4 URL, or leave empty for image fallback)
+const HERO_VIDEO_URL = "";
+
 const Hero = () => {
+  const [muted, setMuted] = useState(true);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+      {/* Background — video or image */}
       <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="Wout filming on set"
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover"
-        />
+        {HERO_VIDEO_URL ? (
+          <>
+            <video
+              src={HERO_VIDEO_URL}
+              autoPlay
+              loop
+              muted={muted}
+              playsInline
+              className="w-full h-full object-cover"
+            />
+            <button
+              onClick={() => setMuted(!muted)}
+              className="absolute bottom-24 right-6 z-20 p-3 rounded-full bg-background/60 backdrop-blur-sm border border-border text-foreground hover:bg-background/80 transition-colors"
+              aria-label={muted ? "Unmute" : "Mute"}
+            >
+              {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+          </>
+        ) : (
+          <img
+            src={heroBg}
+            alt="De Wilde Media Producties — filming on set"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-background/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
       </div>
@@ -45,8 +71,8 @@ const Hero = () => {
           transition={{ delay: 0.7 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
         >
-          Ik ben Wout — 18 jaar, 3 jaar professionele ervaring.
-          Van bruiloften tot commercials, ik breng jouw visie tot leven.
+          De Wilde Media Producties — professionele video content
+          die jouw visie tot leven brengt.
         </motion.p>
 
         <motion.div

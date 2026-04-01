@@ -193,7 +193,7 @@ const Contact = () => {
       {/* Footer */}
       <div className="container mx-auto px-4 mt-24 pt-8 border-t border-border">
         <p className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Wout Visuals. Alle rechten voorbehouden.
+          © {new Date().getFullYear()} De Wilde Media Producties. Alle rechten voorbehouden.
         </p>
       </div>
     </section>
