@@ -14,7 +14,7 @@ type ProjectFormat = "landscape" | "portrait";
 const projects: { img: string; title: string; category: string; videoUrl: string; format: ProjectFormat }[] = [
   { img: portfolio1, title: "Skyline at Golden Hour", category: "Drone", videoUrl: "https://youtu.be/grmlV73ndAs", format: "landscape" },
   { img: portfolio2, title: "Love in the Dark", category: "Bruiloft", videoUrl: "", format: "landscape" },
-  { img: portfolio3, title: "Product Showcase", category: "Commercial", videoUrl: "", format: "portrait" },
+  { img: portfolio3, title: "Product Showcase", category: "Commercial", videoUrl: "https://www.tiktok.com/@the.base.legacy/video/7575133640678509857", format: "portrait" },
   { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
   { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
