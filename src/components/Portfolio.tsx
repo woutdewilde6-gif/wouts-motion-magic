@@ -94,6 +94,7 @@ const projects: {
     category: "Entertainment",
     videoUrl: "https://youtu.be/qjF7oDGKolw?si=yv_izNLr51U2u0c3",
     format: "landscape",
+    services: ["Editen"],
     // stats: { views: "11.592", likes: "66", exposure: 2.7 },
   },
 ];
