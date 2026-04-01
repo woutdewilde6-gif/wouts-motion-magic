@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, X } from "lucide-react";
+import { Play, X, Eye, Heart, TrendingUp } from "lucide-react";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -8,10 +8,17 @@ import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
 import portfolio7 from "@/assets/portfolio-7.jpg";
+import portfolio8 from "@/assets/portfolio-8.jpg";
 
 type ProjectFormat = "landscape" | "portrait";
 
-const projects: { img: string; title: string; category: string; videoUrl: string; format: ProjectFormat }[] = [
+interface ProjectStats {
+  views: string;
+  likes: string;
+  exposure: number;
+}
+
+const projects: { img: string; title: string; category: string; videoUrl: string; format: ProjectFormat; stats?: ProjectStats }[] = [
   { img: portfolio1, title: "Skyline at Golden Hour", category: "Drone", videoUrl: "https://youtu.be/grmlV73ndAs", format: "landscape" },
   { img: portfolio2, title: "Love in the Dark", category: "Bruiloft", videoUrl: "", format: "landscape" },
   { img: portfolio3, title: "Product Showcase", category: "Commercial", videoUrl: "https://www.tiktok.com/@the.base.legacy/video/7575133640678509857", format: "portrait" },
@@ -19,6 +26,7 @@ const projects: { img: string; title: string; category: string; videoUrl: string
   { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
   { img: portfolio7, title: "Festival Vibes", category: "Evenement", videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/", format: "landscape" },
+  { img: portfolio8, title: "Show Steven Grosveld", category: "Evenement", videoUrl: "https://vimeo.com/1179358045", format: "landscape", stats: { views: "3.211", likes: "66", exposure: 2.1 } },
 ];
 
 function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | null {
