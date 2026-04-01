@@ -57,7 +57,7 @@ const FAQ = () => {
             Veelgestelde vragen
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            Antwoorden op de meest gestelde vragen over mijn videoproducties.
+            Antwoorden op de meest gestelde vragen over mijn werk.
           </p>
         </motion.div>
 
