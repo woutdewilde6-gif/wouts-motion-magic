@@ -13,7 +13,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Naam: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.type}\n\n${formData.message}`
     );
-    window.open(`mailto:info@woutvisuals.nl?subject=${subject}&body=${body}`);
+    window.open(`mailto:info@dewildemedia.nl?subject=${subject}&body=${body}`);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
   };
@@ -135,14 +135,14 @@ const Contact = () => {
               <h3 className="font-display font-semibold text-foreground">Direct contact</h3>
 
               <a
-                href="mailto:info@woutvisuals.nl"
+                href="mailto:info@dewildemedia.nl"
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Mail size={18} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">info@woutvisuals.nl</p>
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">info@dewildemedia.nl</p>
                   <p className="text-xs text-muted-foreground">Email</p>
                 </div>
               </a>
@@ -181,7 +181,7 @@ const Contact = () => {
                 <Instagram size={18} className="text-primary" />
               </div>
               <div className="flex-1">
-                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@woutvisuals</p>
+                <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">@dewildemedia</p>
                 <p className="text-xs text-muted-foreground">Volg op Instagram</p>
               </div>
               <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
@@ -193,7 +193,7 @@ const Contact = () => {
       {/* Footer */}
       <div className="container mx-auto px-4 mt-24 pt-8 border-t border-border">
         <p className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Wout Visuals. Alle rechten voorbehouden.
+          © {new Date().getFullYear()} De Wilde Media Producties. Alle rechten voorbehouden.
         </p>
       </div>
     </section>

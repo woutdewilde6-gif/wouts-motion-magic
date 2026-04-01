@@ -21,7 +21,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <a href="#" className="font-display text-xl font-bold text-gradient">
-          WOUT VISUALS
+          DE WILDE MEDIA
         </a>
 
         {/* Desktop */}
