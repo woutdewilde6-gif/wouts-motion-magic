@@ -46,7 +46,7 @@ const projects: {
     img: portfolio3,
     title: "Product Showcase",
     category: "Commercial",
-    videoUrl: "https://www.tiktok.com/@the.base.legacy/video/7575133640678509857",
+    videoUrl: "https://vimeo.com/1179367811?fl=tl&fe=ec",
     format: "portrait",
   },
   { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
