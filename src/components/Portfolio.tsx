@@ -85,6 +85,7 @@ const projects: {
     category: "Evenement",
     videoUrl: "https://vimeo.com/1179358045",
     format: "landscape",
+    services: ["Editen", "Filmen"],
     stats: { views: "3.211", likes: "66", exposure: 2.1 },
   },
   {
