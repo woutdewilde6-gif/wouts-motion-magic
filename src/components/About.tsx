@@ -18,7 +18,7 @@ const timeline = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-card/50">
+    <section id="about" className="py-16 bg-card/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
