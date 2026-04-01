@@ -60,20 +60,20 @@ const projects: {
     format: "landscape",
   },
   {
-    img: portfolio2,
-    title: "Steven Grosveld",
-    category: "Entertainment",
-    videoUrl: "https://youtu.be/VIEXefxEHco?si=pbDIxpw-85_PshF5",
-    format: "landscape",
-    stats: { views: "11.592", likes: "66", exposure: 2.7 },
-  },
-  {
     img: portfolio7,
     title: "Show Steven Grosveld",
     category: "Evenement",
     videoUrl: "https://vimeo.com/1179358045",
     format: "landscape",
     stats: { views: "3.211", likes: "66", exposure: 2.1 },
+  },
+  {
+    img: portfolio2,
+    title: "Steven Grosveld",
+    category: "Entertainment",
+    videoUrl: "https://youtu.be/VIEXefxEHco?si=pbDIxpw-85_PshF5",
+    format: "landscape",
+    stats: { views: "11.592", likes: "66", exposure: 2.7 },
   },
 ];
 
