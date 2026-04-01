@@ -24,6 +24,7 @@ const projects: {
   category: string;
   videoUrl: string;
   format: ProjectFormat;
+  services: ("Editen" | "Filmen")[];
   stats?: ProjectStats;
 }[] = [
   {
