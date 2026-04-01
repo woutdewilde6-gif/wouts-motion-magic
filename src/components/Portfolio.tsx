@@ -124,7 +124,7 @@ const Portfolio = () => {
               </button>
 
               {/* Video area */}
-              <div className="aspect-video bg-black">
+              <div className={activeProject.format === "portrait" ? "aspect-[9/16]" : "aspect-video"} style={{ background: "black" }}>
                 {embedUrl ? (
                   <iframe
                     src={embedUrl}
