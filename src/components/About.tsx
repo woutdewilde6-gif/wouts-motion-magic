@@ -10,9 +10,10 @@ const skills = [
 ];
 
 const timeline = [
-  { year: "2023", text: "Begonnen met video editing als hobby" },
-  { year: "2024", text: "Eerste klanten en social media content" },
-  { year: "2025", text: "De Wilde Media Producties opgericht" },
+  { year: "2021", text: "Begonnen met video editing" },
+  { year: "2022", text: "Eerste social media klant" },
+  { year: "2024", text: "Uitgegroeid met meer klanten en projecten" },
+  { year: "2025", text: "Begonnen met filmen en De Wilde Media Producties opgericht" },
 ];
 
 const About = () => {
