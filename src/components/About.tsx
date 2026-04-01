@@ -46,7 +46,7 @@ const About = () => {
               <img
                 src={heroBg}
                 alt="Wout de Wilde"
-                className="w-full aspect-[4/5] object-cover"
+                className="w-full aspect-[3/4] object-cover"
               />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-5 py-2 rounded-lg font-display font-bold text-sm">
