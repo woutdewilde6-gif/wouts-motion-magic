@@ -268,9 +268,15 @@ const Portfolio = () => {
               {/* Info bar */}
               <div className="p-6 flex items-center justify-between">
                 <div>
-                  <span className="text-xs uppercase tracking-wider text-primary font-display">
-                    {activeProject.category}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs uppercase tracking-wider text-primary font-display">
+                      {activeProject.category}
+                    </span>
+                    <span className="text-xs text-muted-foreground">•</span>
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-display">
+                      {activeProject.services.join(" & ")}
+                    </span>
+                  </div>
                   <h3 className="font-display text-xl font-semibold text-foreground mt-1">{activeProject.title}</h3>
                 </div>
                 <a
