@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram, ArrowUpRight, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Linkedin, ArrowUpRight, Send, CheckCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", type: "", message: "" });
