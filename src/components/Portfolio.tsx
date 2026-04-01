@@ -18,15 +18,53 @@ interface ProjectStats {
   exposure: number;
 }
 
-const projects: { img: string; title: string; category: string; videoUrl: string; format: ProjectFormat; stats?: ProjectStats }[] = [
-  { img: portfolio1, title: "Skyline at Golden Hour", category: "Drone", videoUrl: "https://youtu.be/grmlV73ndAs", format: "landscape" },
-  { img: portfolio2, title: "Love in the Dark", category: "Bruiloft", videoUrl: "", format: "landscape" },
-  { img: portfolio3, title: "Product Showcase", category: "Commercial", videoUrl: "https://www.tiktok.com/@the.base.legacy/video/7575133640678509857", format: "portrait" },
+const projects: {
+  img: string;
+  title: string;
+  category: string;
+  videoUrl: string;
+  format: ProjectFormat;
+  stats?: ProjectStats;
+}[] = [
+  {
+    img: portfolio1,
+    title: "Skyline at Golden Hour",
+    category: "Drone",
+    videoUrl: "https://youtu.be/grmlV73ndAs",
+    format: "landscape",
+  },
+  {
+    img: portfolio2,
+    title: "Steven Grosveld",
+    category: "Entertainment",
+    videoUrl: "https://youtu.be/VIEXefxEHco?si=pbDIxpw-85_PshF5",
+    format: "landscape",
+  },
+  {
+    img: portfolio3,
+    title: "Product Showcase",
+    category: "Commercial",
+    videoUrl: "https://www.tiktok.com/@the.base.legacy/video/7575133640678509857",
+    format: "portrait",
+  },
   { img: portfolio4, title: "Neon Dreams", category: "Muziekvideo", videoUrl: "", format: "portrait" },
   { img: portfolio5, title: "Into the Wild", category: "Documentaire", videoUrl: "", format: "landscape" },
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
-  { img: portfolio7, title: "Festival Vibes", category: "Evenement", videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/", format: "landscape" },
-  { img: portfolio8, title: "Show Steven Grosveld", category: "Evenement", videoUrl: "https://vimeo.com/1179358045", format: "landscape", stats: { views: "3.211", likes: "66", exposure: 2.1 } },
+  {
+    img: portfolio7,
+    title: "Festival Vibes",
+    category: "Evenement",
+    videoUrl: "https://www.instagram.com/reel/DVoSkUoAr_I/",
+    format: "landscape",
+  },
+  {
+    img: portfolio8,
+    title: "Show Steven Grosveld",
+    category: "Evenement",
+    videoUrl: "https://vimeo.com/1179358045",
+    format: "landscape",
+    stats: { views: "3.211", likes: "66", exposure: 2.1 },
+  },
 ];
 
 function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | null {
@@ -35,7 +73,9 @@ function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | 
   const tiktokMatch = url.match(/tiktok\.com\/@[\w.]+\/video\/(\d+)/);
   if (tiktokMatch) return { type: "tiktok", url: `https://www.tiktok.com/embed/${tiktokMatch[1]}` };
   // YouTube
-  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+  const ytMatch = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+  );
   if (ytMatch) return { type: "iframe", url: `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0` };
   // Vimeo
   const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
@@ -47,7 +87,7 @@ function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | 
 }
 
 const Portfolio = () => {
-  const [activeProject, setActiveProject] = useState<typeof projects[0] | null>(null);
+  const [activeProject, setActiveProject] = useState<(typeof projects)[0] | null>(null);
 
   const embed = activeProject ? getEmbedUrl(activeProject.videoUrl) : null;
 
@@ -61,12 +101,8 @@ const Portfolio = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <p className="text-sm uppercase tracking-[0.3em] text-primary font-display mb-3">
-              Portfolio
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold">
-              Recente projecten
-            </h2>
+            <p className="text-sm uppercase tracking-[0.3em] text-primary font-display mb-3">Portfolio</p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold">Recente projecten</h2>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[240px]">
@@ -140,7 +176,10 @@ const Portfolio = () => {
               </button>
 
               {/* Video area */}
-              <div className={activeProject.format === "portrait" ? "aspect-[9/16]" : "aspect-video"} style={{ background: "black" }}>
+              <div
+                className={activeProject.format === "portrait" ? "aspect-[9/16]" : "aspect-video"}
+                style={{ background: "black" }}
+              >
                 {embed ? (
                   <iframe
                     src={embed.url}
@@ -161,9 +200,7 @@ const Portfolio = () => {
                       <div className="w-16 h-16 rounded-full border-2 border-primary/50 flex items-center justify-center">
                         <Play size={28} className="text-primary ml-1" />
                       </div>
-                      <p className="text-sm font-display text-foreground/70">
-                        Video binnenkort beschikbaar
-                      </p>
+                      <p className="text-sm font-display text-foreground/70">Video binnenkort beschikbaar</p>
                     </div>
                   </div>
                 )}
@@ -196,9 +233,7 @@ const Portfolio = () => {
                   <span className="text-xs uppercase tracking-wider text-primary font-display">
                     {activeProject.category}
                   </span>
-                  <h3 className="font-display text-xl font-semibold text-foreground mt-1">
-                    {activeProject.title}
-                  </h3>
+                  <h3 className="font-display text-xl font-semibold text-foreground mt-1">{activeProject.title}</h3>
                 </div>
                 <a
                   href="#contact"
