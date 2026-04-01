@@ -39,7 +39,7 @@ function getEmbedUrl(url: string): { type: "iframe" | "tiktok"; url: string } | 
 const Portfolio = () => {
   const [activeProject, setActiveProject] = useState<typeof projects[0] | null>(null);
 
-  const embedUrl = activeProject ? getEmbedUrl(activeProject.videoUrl) : null;
+  const embed = activeProject ? getEmbedUrl(activeProject.videoUrl) : null;
 
   return (
     <>
