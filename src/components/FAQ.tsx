@@ -36,7 +36,7 @@ const faqs = [
   {
     question: "Hoeveel revisierondes zijn inbegrepen?",
     answer:
-      "Standaard zijn er 2 revisierondes inbegrepen. Extra aanpassingen zijn uiteraard mogelijk en worden vooraf besproken.",
+      "De eerste revisieronde is altijd gratis. Extra aanpassingen zijn uiteraard mogelijk en worden vooraf besproken.",
   },
 ];
 
