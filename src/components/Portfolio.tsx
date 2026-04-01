@@ -8,7 +8,7 @@ import portfolio4 from "@/assets/portfolio-4.jpg";
 import portfolio5 from "@/assets/portfolio-5.jpg";
 import portfolio6 from "@/assets/portfolio-6.jpg";
 import portfolio7 from "@/assets/portfolio-7.jpg";
-import portfolio8 from "@/assets/portfolio-8.jpg";
+import portfolio8 from "@/assets/portfolio-tafelaar.png";
 
 type ProjectFormat = "landscape" | "portrait";
 
