@@ -66,11 +66,6 @@ const About = () => {
               18 jaar en gepassioneerd door alles wat met video te maken heeft. 
               Wat begon als een hobby is uitgegroeid tot mijn eigen bedrijf: De Wilde Media Producties.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Ik focus me vooral op video editing. Van korte social media clips 
-              tot langere projecten. Ik vind het leuk om verhalen visueel tot leven 
-              te brengen en elk project net dat beetje extra mee te geven.
-            </p>
 
             {/* Skills */}
             <div>
