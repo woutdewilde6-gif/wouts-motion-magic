@@ -132,7 +132,7 @@ const Contact = () => {
             className="lg:col-span-2 space-y-4"
           >
             <div className="bg-secondary/50 border border-border rounded-xl p-6 space-y-5">
-              <h3 className="font-display font-semibold text-foreground">Direct contact</h3>
+              <h3 className="font-display font-semibold text-foreground">Contact</h3>
 
               <a
                 href="mailto:info@dewildemedia.nl"
