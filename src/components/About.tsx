@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+import aboutPhoto from "@/assets/about-photo.jpg";
 
 const timeline = [
   { year: "2021", text: "Begonnen met video editing" },
