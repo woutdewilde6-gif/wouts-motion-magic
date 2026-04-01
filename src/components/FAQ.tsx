@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "Hoe lang duurt het voordat mijn video klaar is?",
     answer:
-      "Dat verschilt per project. Korte social media content kan vaak dezelfde dag nog geleverd worden. Bij grotere projecten neem ik graag wat meer tijd om alles tot in de puntjes af te werken. Kwaliteit gaat altijd voor. We spreken vooraf altijd een deadline af.",
+      "Dat verschilt per project. Korte social media content kan vaak dezelfde dag nog geleverd worden. Bij grotere projecten neem ik graag wat meer tijd om alles tot in de puntjes af te werken — kwaliteit gaat altijd voor. We spreken vooraf altijd een deadline af.",
   },
   {
     question: "Welke apparatuur en software gebruik je?",
