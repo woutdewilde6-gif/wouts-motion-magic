@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "Wat kost een video?",
     answer:
-      "De kosten hangen af van het type video, de lengte en eventuele extra's zoals drone-opnames of motion graphics. Neem gerust contact op voor een vrijblijvende offerte op maat.",
+      "Dat hangt af van het type video, de lengte en wat er precies bij komt kijken. Stuur me gerust een berichtje, dan kijk ik wat de mogelijkheden zijn!",
   },
   {
     question: "Hoe lang duurt het voordat mijn video klaar is?",
