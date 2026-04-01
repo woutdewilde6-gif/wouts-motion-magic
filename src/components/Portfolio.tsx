@@ -51,6 +51,7 @@ const projects: {
     category: "Behind The Scenes",
     videoUrl: "https://vimeo.com/1179372802?fl=tl&fe=ec",
     format: "portrait",
+    services: ["Editen"],
   },
   {
     img: portfolio5,
