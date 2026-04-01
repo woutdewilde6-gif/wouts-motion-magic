@@ -68,6 +68,7 @@ const projects: {
     category: "Evenement",
     videoUrl: "https://vimeo.com/1179357991?fl=tl&fe=ec",
     format: "portrait",
+    services: ["Editen", "Filmen"],
     stats: { views: "3.583", likes: "112", exposure: 3.5 },
   },
   {
