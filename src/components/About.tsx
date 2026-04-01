@@ -22,7 +22,7 @@ const About = () => {
             Over mij
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-bold">
-            De mens achter de camera
+            De persoon achter de camera
           </h2>
         </motion.div>
 
