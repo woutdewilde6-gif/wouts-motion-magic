@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "Wat kost een video?",
     answer:
-      "De kosten hangen af van het type video, de lengte en eventuele extra's zoals drone-opnames of motion graphics. Neem gerust contact op voor een vrijblijvende offerte op maat.",
+      "Dat hangt af van het type video, de lengte en wat er precies bij komt kijken. Stuur me gerust een berichtje, dan kijk ik wat de mogelijkheden zijn!",
   },
   {
     question: "Hoe lang duurt het voordat mijn video klaar is?",
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: "Kan ik ook korte content voor social media laten maken?",
     answer:
-      "Zeker! Ik maak regelmatig short-form content voor TikTok, Instagram Reels en YouTube Shorts. Dit kan als los project of als aanvulling op een grotere productie.",
+      "Zeker! Ik maak regelmatig short-form content voor TikTok, Instagram Reels en YouTube Shorts. Dit kan als los project of als extra naast een andere video.",
   },
   {
     question: "Werk je ook buiten de regio?",
