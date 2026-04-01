@@ -111,7 +111,9 @@ const Portfolio = () => {
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl bg-card border border-border rounded-2xl overflow-hidden card-shadow"
+              className={`relative w-full bg-card border border-border rounded-2xl overflow-hidden card-shadow ${
+                activeProject.format === "portrait" ? "max-w-sm" : "max-w-4xl"
+              }`}
             >
               {/* Close button */}
               <button
