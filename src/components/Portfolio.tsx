@@ -57,6 +57,7 @@ const projects: {
     category: "Entertainment",
     videoUrl: "https://youtu.be/axew6Qdy3jU?si=5V3-Qn2SCLpGhbiX",
     format: "landscape",
+    stats: { views: "1.342", likes: "75", exposure: 6.7 },
   },
   { img: portfolio6, title: "Live & Loud", category: "Evenement", videoUrl: "", format: "portrait" },
   {
