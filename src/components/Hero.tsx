@@ -60,7 +60,7 @@ const Hero = () => {
           transition={{ delay: 0.5, duration: 0.7 }}
           className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6"
         >
-          Van idee,
+          Van idee
           <br />
           <span className="text-gradient">tot Eindresultaat.</span>
         </motion.h1>
