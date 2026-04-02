@@ -142,7 +142,7 @@ const Contact = () => {
                   <Mail size={18} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">info@dewildemedia.nl</p>
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">wout@dewildemedia.nl</p>
                   <p className="text-xs text-muted-foreground">Email</p>
                 </div>
               </a>
