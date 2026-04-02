@@ -13,7 +13,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Naam: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.type}\n\n${formData.message}`
     );
-    window.open(`mailto:info@dewildemedia.nl?subject=${subject}&body=${body}`);
+    window.open(`mailto:wout@dewildemedia.nl?subject=${subject}&body=${body}`);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
   };
@@ -135,14 +135,14 @@ const Contact = () => {
               <h3 className="font-display font-semibold text-foreground">Contact</h3>
 
               <a
-                href="mailto:info@dewildemedia.nl"
+                href="mailto:wout@dewildemedia.nl"
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Mail size={18} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">info@dewildemedia.nl</p>
+                  <p className="text-foreground font-medium group-hover:text-primary transition-colors">wout@dewildemedia.nl</p>
                   <p className="text-xs text-muted-foreground">Email</p>
                 </div>
               </a>
