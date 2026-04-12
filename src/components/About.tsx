@@ -61,7 +61,7 @@ const About = () => {
 
             <div>
               <h3 className="font-display font-semibold text-foreground mb-3">
-                Videografie
+                Tijdlijn
               </h3>
               <div className="space-y-3">
                 {timeline.map((item) => (
