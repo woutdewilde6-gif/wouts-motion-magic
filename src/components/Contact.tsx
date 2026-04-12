@@ -1,21 +1,40 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram, Linkedin, ArrowUpRight, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Linkedin, ArrowUpRight, Send, CheckCircle, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", type: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // mailto fallback
-    const subject = encodeURIComponent(`Aanvraag: ${formData.type || "Project"}`);
-    const body = encodeURIComponent(
-      `Naam: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.type}\n\n${formData.message}`
-    );
-    window.open(`mailto:wout@dewildemedia.nl?subject=${subject}&body=${body}`);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setLoading(true);
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-notification", {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          projectType: formData.type,
+          message: formData.message,
+        },
+      });
+      if (error) throw error;
+      setSubmitted(true);
+      setFormData({ name: "", email: "", type: "", message: "" });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      console.error("Submit error:", err);
+      // Fallback to mailto
+      const subject = encodeURIComponent(`Aanvraag: ${formData.type || "Project"}`);
+      const body = encodeURIComponent(
+        `Naam: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.type}\n\n${formData.message}`
+      );
+      window.open(`mailto:wout@dewildemedia.nl?subject=${subject}&body=${body}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const projectTypes = ["Bruiloft", "Commercial", "Muziekvideo", "Evenement", "Social Media", "Documentaire"];
@@ -108,12 +127,18 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:opacity-90 transition-opacity glow w-full sm:w-auto justify-center"
+              disabled={loading}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:opacity-90 transition-opacity glow w-full sm:w-auto justify-center disabled:opacity-60"
             >
               {submitted ? (
                 <>
                   <CheckCircle size={18} />
                   Verstuurd!
+                </>
+              ) : loading ? (
+                <>
+                  <Loader2 size={18} className="animate-spin" />
+                  Versturen...
                 </>
               ) : (
                 <>
