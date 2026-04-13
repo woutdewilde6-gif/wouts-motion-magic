@@ -94,6 +94,41 @@ const Reviews = () => {
               <ChevronRight size={20} />
             </button>
           </div>
+
+          {/* Trustpilot integration */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 pt-10 border-t border-border"
+          >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a
+                href="https://nl.trustpilot.com/review/dewildemedia.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-5 py-3 rounded-xl border border-border bg-background hover:border-primary transition-colors group"
+              >
+                <div className="flex items-center gap-1.5">
+                  <Star size={16} className="fill-[#00b67a] text-[#00b67a]" />
+                  <span className="font-display font-semibold text-foreground text-sm">Trustpilot</span>
+                </div>
+                <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                  Bekijk profiel →
+                </span>
+              </a>
+
+              <a
+                href="https://nl.trustpilot.com/evaluate/dewildemedia.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#00b67a] text-white font-display font-semibold text-sm hover:bg-[#00a06a] transition-colors"
+              >
+                <ExternalLink size={15} />
+                Laat een review achter
+              </a>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
