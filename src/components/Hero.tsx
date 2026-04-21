@@ -71,7 +71,7 @@ const Hero = () => {
           transition={{ delay: 0.7 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
         >
-          De Wilde Media Producties. Professionele video content die jouw visie tot leven brengt.
+          De Wilde Media Producties. Professionele video-content die jouw visie tot leven brengt.
         </motion.p>
 
         <motion.div
