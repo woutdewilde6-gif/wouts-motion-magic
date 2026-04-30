@@ -13,7 +13,8 @@ const Index = () => {
       <Hero />
       <About />
       <Portfolio />
-      <Reviews />
+      {/* Reviews tijdelijk verborgen — verwijder de comment-tags hieronder om weer te tonen */}
+      {/* <Reviews /> */}
       <FAQ />
       <Contact />
     </div>
