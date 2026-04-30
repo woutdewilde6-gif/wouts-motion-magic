@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Over mij", href: "#about" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Reviews", href: "#reviews" },
+  // { label: "Reviews", href: "#reviews" }, // tijdelijk verborgen — uncomment om weer te tonen
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
