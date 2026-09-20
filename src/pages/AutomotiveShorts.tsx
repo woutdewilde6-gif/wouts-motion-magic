@@ -51,8 +51,8 @@ const AutomotiveShorts = () => {
             Voorbeeld videos
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Een selectie van korte automotive content die ik heb gemaakt.
-            Elke video is geedit met focus op tempo, sound design en impact.
+            Dit zijn algemene shorts, puur als voorbeeld van wat ik kan maken.
+            Niets is hier specifiek voor één merk gemaakt, dus ik pas alles graag aan op wat jij voor ogen hebt.
           </p>
         </motion.div>
 
