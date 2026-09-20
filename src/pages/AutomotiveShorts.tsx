@@ -7,9 +7,11 @@ interface ShortVideo {
   title: string;
   file: string;
   format: "portrait" | "landscape";
+  thumb?: string; // optioneel: bestandsnaam van een afbeelding in dezelfde opslag
 }
 
 // Voeg hier je videos toe. file is de bestandsnaam in de opslag.
+// thumb is optioneel: upload een afbeelding in dezelfde opslag en vul de naam hier in.
 const videos: ShortVideo[] = [
   { title: "Short 1", file: "Short 1.mp4", format: "portrait" },
   { title: "Short 2", file: "Short 2.mp4", format: "portrait" },
@@ -26,7 +28,7 @@ const AutomotiveShorts = () => {
       const { data } = await supabase.storage
         .from(BUCKET)
         .createSignedUrls(
-          videos.map((v) => v.file),
+          videos.flatMap((v) => (v.thumb ? [v.file, v.thumb] : [v.file])),
           60 * 60 * 24 * 7
         );
       if (data) {
@@ -90,7 +92,13 @@ const AutomotiveShorts = () => {
                   className="group relative w-full rounded-xl overflow-hidden card-shadow bg-black aspect-[9/16] block"
                   aria-label={`${video.title} groot afspelen`}
                 >
-                  {url ? (
+                  {video.thumb && urls[video.thumb] ? (
+                    <img
+                      src={urls[video.thumb]}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : url ? (
                     <video
                       src={url}
                       className="w-full h-full object-cover"
