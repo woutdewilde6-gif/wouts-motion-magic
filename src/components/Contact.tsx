@@ -98,7 +98,7 @@ const Contact = () => {
                 maxLength={120}
                 value={formData.type}
                 onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                placeholder="Bijvoorbeeld bruiloft, commercial of iets anders"
+                placeholder="Bijvoorbeeld aftermovie, social media content of iets anders"
                 className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
               />
             </div>
