@@ -16,7 +16,7 @@ const Contact = () => {
         body: {
           name: formData.name,
           email: formData.email,
-          projectType: formData.type,
+          projectType: formData.type.trim(),
           message: formData.message,
         },
       });
