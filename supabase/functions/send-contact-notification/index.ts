@@ -50,8 +50,52 @@ serve(async (req) => {
       );
     }
 
+    const resendKey = Deno.env.get("RESEND_API_KEY");
+    let emailSent = false;
+    let emailError: string | null = null;
+
+    if (resendKey) {
+      const esc = (s: string) =>
+        s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+      const html = `
+        <div style="font-family: Arial, sans-serif; color: #111; line-height: 1.6;">
+          <h2 style="color:#1d4ed8; margin-bottom: 16px;">Nieuw bericht via de website</h2>
+          <p><strong>Naam:</strong> ${esc(name)}</p>
+          <p><strong>E-mail:</strong> ${esc(email)}</p>
+          <p><strong>Type project:</strong> ${esc(projectType || "Niet ingevuld")}</p>
+          <p><strong>Bericht:</strong></p>
+          <p style="white-space: pre-wrap; background:#f4f6fb; padding:12px; border-radius:8px;">${esc(message)}</p>
+        </div>
+      `;
+
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${resendKey}`,
+        },
+        body: JSON.stringify({
+          from: Deno.env.get("CONTACT_FROM_EMAIL") || "De Wilde Media <onboarding@resend.dev>",
+          to: [Deno.env.get("CONTACT_TO_EMAIL") || "woutdewilde6@gmail.com"],
+          reply_to: email,
+          subject: `Nieuw bericht van ${name}`,
+          html,
+        }),
+      });
+
+      if (res.ok) {
+        emailSent = true;
+      } else {
+        emailError = await res.text();
+        console.error(`Resend failed [${res.status}]: ${emailError}`);
+      }
+    } else {
+      console.warn("RESEND_API_KEY not configured, skipping email");
+    }
+
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, emailSent, emailError }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
