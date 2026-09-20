@@ -77,7 +77,7 @@ serve(async (req) => {
         },
         body: JSON.stringify({
           from: Deno.env.get("CONTACT_FROM_EMAIL") || "De Wilde Media <onboarding@resend.dev>",
-          to: ["wout@dewildemedia.nl"],
+          to: [Deno.env.get("CONTACT_TO_EMAIL") || "woutdewilde6@gmail.com"],
           reply_to: email,
           subject: `Nieuw bericht van ${name}`,
           html,
