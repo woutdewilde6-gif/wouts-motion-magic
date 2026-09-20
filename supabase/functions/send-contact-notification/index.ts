@@ -10,7 +10,7 @@ import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 const BodySchema = z.object({
   name: z.string().min(1).max(255),
   email: z.string().email(),
-  projectType: z.string().optional(),
+  projectType: z.string().max(255).optional(),
   message: z.string().min(1).max(5000),
 });
 
