@@ -54,11 +54,6 @@ const AutomotiveShorts = () => {
             Dit zijn shorts die we in een vergelijkbare stijl voor je kunnen maken.
             Ze laten vooral zien wat we kunnen met tempo, energie en kwaliteit.
           </p>
-          <p className="text-muted-foreground max-w-xl mx-auto mt-4">
-            De eerste is opgenomen met een professionele camera en oogt direct hoogwaardig.
-            De andere zijn gewoon met de telefoon gemaakt, naturel en rauw. We kunnen beide
-            kanten op, dus we kijken samen wat het beste bij jouw merk past.
-          </p>
         </motion.div>
 
         {videos.length > 0 ? (
