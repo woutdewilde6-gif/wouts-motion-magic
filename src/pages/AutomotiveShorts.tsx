@@ -14,7 +14,7 @@ interface ShortVideo {
 // thumb is optioneel: upload een afbeelding in dezelfde opslag en vul de naam hier in.
 const videos: ShortVideo[] = [
   { title: "Short 1", file: "Short 1.mp4", format: "portrait", thumb: "short-1-thumb.png" },
-  { title: "Short 2", file: "Short 2.mp4", format: "portrait" },
+  { title: "Short 2", file: "Short 2.mp4", format: "portrait", thumb: "short-2-thumb.png" },
 ];
 
 const BUCKET = "automotive-shorts";
