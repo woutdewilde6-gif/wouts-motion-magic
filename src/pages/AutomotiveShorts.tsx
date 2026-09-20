@@ -51,8 +51,13 @@ const AutomotiveShorts = () => {
             Voorbeeld videos
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Dit zijn shorts die we in een vergelijkbare stijl voor je kunnen namaken.
-            Ze laten vooral zien wat we kunnen met montage, tempo en sound design.
+            Dit zijn shorts die we in een vergelijkbare stijl voor je kunnen maken.
+            Ze laten vooral zien wat we kunnen met tempo, energie en kwaliteit.
+          </p>
+          <p className="text-muted-foreground max-w-xl mx-auto mt-4">
+            De eerste is met een professionele camera opgenomen en oogt echt van hoge
+            kwaliteit. De andere zijn met de telefoon gemaakt, lekker naturel. Beide
+            stijlen kunnen, dus we kijken samen wat het beste bij jouw merk past.
           </p>
         </motion.div>
 
