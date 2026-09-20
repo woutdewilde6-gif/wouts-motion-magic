@@ -37,8 +37,6 @@ const Contact = () => {
     }
   };
 
-  const projectTypes = ["Bruiloft", "Commercial", "Muziekvideo", "Evenement", "Social Media", "Documentaire"];
-
   return (
     <section id="contact" className="py-24 bg-card">
       <div className="container mx-auto px-4">
@@ -95,22 +93,14 @@ const Contact = () => {
 
             <div>
               <label className="block text-sm font-display font-medium text-foreground mb-2">Type project</label>
-              <div className="flex flex-wrap gap-2">
-                {projectTypes.map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    onClick={() => setFormData({ ...formData, type: t })}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                      formData.type === t
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-secondary text-secondary-foreground hover:bg-border"
-                    }`}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
+              <input
+                type="text"
+                maxLength={120}
+                value={formData.type}
+                onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                placeholder="Bijvoorbeeld bruiloft, commercial of iets anders"
+                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
+              />
             </div>
 
             <div>
