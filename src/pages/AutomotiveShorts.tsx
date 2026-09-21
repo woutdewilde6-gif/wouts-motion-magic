@@ -378,10 +378,10 @@ const AutomotiveShorts = () => {
                   i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <TiltCard
-                  onClick={() => url && setActive(video)}
-                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block cursor-pointer"
-                  ariaLabel={`${video.title} groot afspelen`}
+                <SwipeReveal
+                  onOpen={() => url && setActive(video)}
+                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] cursor-pointer"
+                  ariaLabel={`${video.title} onthullen en groot afspelen`}
                 >
                   {video.thumb && urls[video.thumb] ? (
                     <img
@@ -407,7 +407,7 @@ const AutomotiveShorts = () => {
                       <Expand size={18} /> Groot kijken
                     </span>
                   </div>
-                </TiltCard>
+                </SwipeReveal>
 
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
