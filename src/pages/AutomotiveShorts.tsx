@@ -1,6 +1,22 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Expand, Play, Car } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import {
+  X,
+  Expand,
+  Play,
+  Car,
+  MessagesSquare,
+  FileText,
+  CalendarDays,
+  Camera,
+  Clapperboard,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface ShortVideo {
@@ -37,10 +53,88 @@ const BUCKET = "automotive-shorts";
 // Vul hier later de exacte bestandsnaam uit de opslag in, bijvoorbeeld "achter de schermen.mp4".
 const BEHIND_THE_SCENES_FILE = "";
 
+const steps = [
+  {
+    icon: MessagesSquare,
+    title: "Het doel",
+    text: "We beginnen met luisteren. Nieuwe klanten aantrekken, of meer naamsbekendheid door trends te volgen? Dat bepaalt alles wat daarna komt.",
+  },
+  {
+    icon: FileText,
+    title: "De scripts",
+    text: "Wij schrijven de scripts op het doel. Jouw input gebruiken we als basis, maar we kunnen het ook helemaal zelf verzinnen.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Het rooster",
+    text: "Samen maken we een rooster met welke video op welke dag online gaat. Dat delen we, dus je weet altijd wat er wanneer komt.",
+  },
+  {
+    icon: Camera,
+    title: "De shootdag",
+    text: "In één dag filmen we alles. Jij bent er weinig tijd aan kwijt, en wil je niet voor de camera staan, dan stappen wij erin.",
+  },
+  {
+    icon: Clapperboard,
+    title: "Edit en upload",
+    text: "Thuis gaan we meteen aan de slag met de edit. Daarna beheren wij je social media en uploaden alles volgens het rooster.",
+  },
+];
+
+const TiltCard = ({
+  children,
+  className,
+  onClick,
+  ariaLabel,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  ariaLabel?: string;
+}) => {
+  const ref = useRef<HTMLButtonElement>(null);
+  const mx = useMotionValue(0.5);
+  const my = useMotionValue(0.5);
+  const rotateX = useSpring(useTransform(my, [0, 1], [6, -6]), {
+    stiffness: 200,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(mx, [0, 1], [-6, 6]), {
+    stiffness: 200,
+    damping: 20,
+  });
+
+  return (
+    <motion.button
+      ref={ref}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      onMouseMove={(e) => {
+        const rect = ref.current?.getBoundingClientRect();
+        if (!rect) return;
+        mx.set((e.clientX - rect.left) / rect.width);
+        my.set((e.clientY - rect.top) / rect.height);
+      }}
+      onMouseLeave={() => {
+        mx.set(0.5);
+        my.set(0.5);
+      }}
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 250, damping: 20 }}
+      className={className}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
+
 
 const AutomotiveShorts = () => {
   const [urls, setUrls] = useState<Record<string, string>>({});
   const [active, setActive] = useState<ShortVideo | null>(null);
+  const [activeStep, setActiveStep] = useState<number | null>(0);
 
   useEffect(() => {
     const load = async () => {
@@ -161,6 +255,56 @@ const AutomotiveShorts = () => {
           </div>
         </motion.section>
 
+        <div className="max-w-5xl mx-auto mb-20 md:mb-28">
+          <p className="text-sm text-muted-foreground mb-6 text-center">
+            Tik op een stap om te zien wat er gebeurt
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            {steps.map((step, i) => {
+              const Icon = step.icon;
+              const isActive = activeStep === i;
+              return (
+                <button
+                  key={step.title}
+                  onClick={() => setActiveStep(isActive ? null : i)}
+                  className={`group text-left rounded-md border p-4 transition-all duration-300 ${
+                    isActive
+                      ? "border-primary bg-card card-shadow"
+                      : "border-border bg-card/40 hover:border-primary/50 hover:bg-card/80"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md transition-colors ${
+                        isActive
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                      }`}
+                    >
+                      <Icon size={16} />
+                    </span>
+                    <span className="font-display text-sm font-semibold">
+                      {step.title}
+                    </span>
+                  </div>
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.p
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden text-xs text-muted-foreground leading-relaxed"
+                      >
+                        {step.text}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="max-w-5xl mx-auto mb-10 md:mb-14">
           <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
             De voorbeelden
@@ -184,10 +328,10 @@ const AutomotiveShorts = () => {
                   i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <button
+                <TiltCard
                   onClick={() => url && setActive(video)}
-                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block"
-                  aria-label={`${video.title} groot afspelen`}
+                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block cursor-pointer"
+                  ariaLabel={`${video.title} groot afspelen`}
                 >
                   {video.thumb && urls[video.thumb] ? (
                     <img
@@ -213,7 +357,7 @@ const AutomotiveShorts = () => {
                       <Expand size={18} /> Groot kijken
                     </span>
                   </div>
-                </button>
+                </TiltCard>
 
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
