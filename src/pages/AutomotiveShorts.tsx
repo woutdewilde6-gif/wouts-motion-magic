@@ -1,6 +1,22 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Expand, Play, Car } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import {
+  X,
+  Expand,
+  Play,
+  Car,
+  MessagesSquare,
+  FileText,
+  CalendarDays,
+  Camera,
+  Clapperboard,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface ShortVideo {
@@ -36,6 +52,83 @@ const videos: ShortVideo[] = [
 const BUCKET = "automotive-shorts";
 // Vul hier later de exacte bestandsnaam uit de opslag in, bijvoorbeeld "achter de schermen.mp4".
 const BEHIND_THE_SCENES_FILE = "";
+
+const steps = [
+  {
+    icon: MessagesSquare,
+    title: "Het doel",
+    text: "We beginnen met luisteren. Nieuwe klanten aantrekken, of meer naamsbekendheid door trends te volgen? Dat bepaalt alles wat daarna komt.",
+  },
+  {
+    icon: FileText,
+    title: "De scripts",
+    text: "Wij schrijven de scripts op het doel. Jouw input gebruiken we als basis, maar we kunnen het ook helemaal zelf verzinnen.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Het rooster",
+    text: "Samen maken we een rooster met welke video op welke dag online gaat. Dat delen we, dus je weet altijd wat er wanneer komt.",
+  },
+  {
+    icon: Camera,
+    title: "De shootdag",
+    text: "In één dag filmen we alles. Jij bent er weinig tijd aan kwijt, en wil je niet voor de camera staan, dan stappen wij erin.",
+  },
+  {
+    icon: Clapperboard,
+    title: "Edit en upload",
+    text: "Thuis gaan we meteen aan de slag met de edit. Daarna beheren wij je social media en uploaden alles volgens het rooster.",
+  },
+];
+
+const TiltCard = ({
+  children,
+  className,
+  onClick,
+  ariaLabel,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  ariaLabel?: string;
+}) => {
+  const ref = useRef<HTMLButtonElement>(null);
+  const mx = useMotionValue(0.5);
+  const my = useMotionValue(0.5);
+  const rotateX = useSpring(useTransform(my, [0, 1], [6, -6]), {
+    stiffness: 200,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(mx, [0, 1], [-6, 6]), {
+    stiffness: 200,
+    damping: 20,
+  });
+
+  return (
+    <motion.button
+      ref={ref}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      onMouseMove={(e) => {
+        const rect = ref.current?.getBoundingClientRect();
+        if (!rect) return;
+        mx.set((e.clientX - rect.left) / rect.width);
+        my.set((e.clientY - rect.top) / rect.height);
+      }}
+      onMouseLeave={() => {
+        mx.set(0.5);
+        my.set(0.5);
+      }}
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 250, damping: 20 }}
+      className={className}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
 
 
 const AutomotiveShorts = () => {
