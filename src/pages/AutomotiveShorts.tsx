@@ -45,8 +45,8 @@ const videos: ShortVideo[] = [
 ];
 
 const BUCKET = "automotive-shorts";
-// Vul hier later de exacte bestandsnaam uit de opslag in, bijvoorbeeld "achter de schermen.mp4".
-const BEHIND_THE_SCENES_FILE = "";
+// De video achter de schermen, zoals hij in de opslag heet.
+const BEHIND_THE_SCENES_FILE = "B-rll.mp4";
 
 const steps = [
   {
@@ -175,10 +175,11 @@ const AutomotiveShorts = () => {
               <video
                 src={urls[BEHIND_THE_SCENES_FILE]}
                 className="h-full w-full object-cover"
-                controls
+                autoPlay
+                loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
               />
             ) : urls["short-2-thumb.png"] ? (
               <img
