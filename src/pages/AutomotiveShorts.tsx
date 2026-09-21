@@ -122,6 +122,14 @@ const AutomotiveShorts = () => {
       </header>
 
       <main className="container mx-auto px-4 py-14 md:py-20">
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="font-display text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16"
+        >
+          Automotive <span className="text-gradient">Shorts</span>
+        </motion.h1>
+
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
