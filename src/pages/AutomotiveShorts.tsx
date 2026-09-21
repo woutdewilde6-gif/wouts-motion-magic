@@ -357,7 +357,7 @@ const AutomotiveShorts = () => {
                       <Expand size={18} /> Groot kijken
                     </span>
                   </div>
-                </button>
+                </TiltCard>
 
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
