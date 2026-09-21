@@ -46,7 +46,7 @@ const videos: ShortVideo[] = [
 
 const BUCKET = "automotive-shorts";
 // De video achter de schermen, zoals hij in de opslag heet.
-const BEHIND_THE_SCENES_FILE = "B-rll.mp4";
+const BEHIND_THE_SCENES_FILE = "rol.mp4";
 
 const steps = [
   {
