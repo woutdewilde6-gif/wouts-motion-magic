@@ -247,9 +247,6 @@ const AutomotiveShorts = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="max-w-5xl mx-auto mb-10 md:mb-14"
         >
-          <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
-            Automotive Shorts
-          </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
             Voorbeeld videos
           </h2>
