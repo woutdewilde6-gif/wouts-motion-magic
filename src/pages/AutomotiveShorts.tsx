@@ -71,7 +71,7 @@ const steps = [
   {
     icon: Clapperboard,
     title: "Edit en upload",
-    text: "Thuis gaan we meteen aan de slag met de edit. Daarna beheren wij je social media en uploaden alles volgens het schema.",
+    text: "Na de shoot gaan wij zo snel mogelijk aan de slag met de edit. Daarna beheren wij de social media en uploaden wij alles volgens het schema, dus jullie zijn er zelf geen tijd aan kwijt.",
   },
 ];
 
@@ -167,10 +167,10 @@ const AutomotiveShorts = () => {
                 staan is dat geen probleem.
               </p>
               <p>
-                Thuis gaan we meteen aan de slag met de edit. Daarna hoeven
-                jullie niets meer te doen: wij nemen het beheer van je social
-                media over en uploaden alles volgens het schema. Jullie hebben
-                daar altijd inzicht in, dus je weet wat er wanneer online komt.
+                Na de shoot gaan wij zo snel mogelijk aan de slag met de edit.
+                Daarna beheren wij de social media en uploaden wij alles volgens
+                het schema, dus jullie zijn er zelf geen tijd aan kwijt. Jullie
+                hebben daar altijd inzicht in, dus je weet wat er wanneer komt.
               </p>
             </div>
           </div>
