@@ -143,7 +143,7 @@ const SwipeReveal = ({
           return;
         }
         setDragging(true);
-        (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+        ref.current?.setPointerCapture?.(e.pointerId);
         setFromClientX(e.clientX);
       }}
       onPointerMove={(e) => {
