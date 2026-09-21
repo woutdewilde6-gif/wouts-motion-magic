@@ -1,23 +1,49 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Expand, Play } from "lucide-react";
+import { X, Expand, Play, Gauge, CalendarDays, Palette, Car } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface ShortVideo {
   title: string;
+  category: string;
+  description: string;
   file: string;
   format: "portrait" | "landscape";
-  thumb?: string; // optioneel: bestandsnaam van een afbeelding in dezelfde opslag
+  thumb?: string;
 }
 
-// Voeg hier je videos toe. file is de bestandsnaam in de opslag.
-// thumb is optioneel: upload een afbeelding in dezelfde opslag en vul de naam hier in.
 const videos: ShortVideo[] = [
-  { title: "Short 1", file: "Short 1.mp4", format: "portrait", thumb: "short-1-thumb.png" },
-  { title: "Short 2", file: "Short 2.mp4", format: "portrait", thumb: "short-2-thumb.png" },
+  {
+    title: "Short 1",
+    category: "Professionele camera",
+    description:
+      "Een strakke short waarin de lijnen en details van de auto centraal staan. Gefilmd met een professionele camera voor een verzorgde uitstraling.",
+    file: "Short 1.mp4",
+    format: "portrait",
+    thumb: "short-1-thumb.png",
+  },
+  {
+    title: "Short 2",
+    category: "Telefoon content",
+    description:
+      "Een directe en natuurlijke short die goed past tussen de dagelijkse content op social media. Laagdrempelig opgenomen, met aandacht voor tempo en energie.",
+    file: "Short 2.mp4",
+    format: "portrait",
+    thumb: "short-2-thumb.png",
+  },
 ];
 
 const BUCKET = "automotive-shorts";
+// Vul hier later de exacte bestandsnaam uit de opslag in, bijvoorbeeld "achter de schermen.mp4".
+const BEHIND_THE_SCENES_FILE = "";
+
+const carSpecifications = [
+  { label: "Model", value: "Opel Corsa", icon: Car },
+  { label: "Motor", value: "1.2 Turbo", icon: Gauge },
+  { label: "Bouwjaar", value: "2024", icon: CalendarDays },
+  { label: "Vermogen", value: "101 pk", icon: Gauge },
+  { label: "Kleur", value: "Wit", icon: Palette },
+];
 
 const AutomotiveShorts = () => {
   const [urls, setUrls] = useState<Record<string, string>>({});
@@ -25,12 +51,14 @@ const AutomotiveShorts = () => {
 
   useEffect(() => {
     const load = async () => {
+      const files = videos.flatMap((video) =>
+        video.thumb ? [video.file, video.thumb] : [video.file]
+      );
+      if (BEHIND_THE_SCENES_FILE) files.push(BEHIND_THE_SCENES_FILE);
+
       const { data } = await supabase.storage
         .from(BUCKET)
-        .createSignedUrls(
-          videos.flatMap((v) => (v.thumb ? [v.file, v.thumb] : [v.file])),
-          60 * 60 * 24 * 7
-        );
+        .createSignedUrls(files, 60 * 60 * 24 * 7);
       if (data) {
         const map: Record<string, string> = {};
         data.forEach((entry) => {
@@ -58,11 +86,11 @@ const AutomotiveShorts = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-16 md:py-24">
+      <main className="container mx-auto px-4 py-14 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-display mb-3">
             Automotive Shorts
@@ -70,26 +98,55 @@ const AutomotiveShorts = () => {
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
             Voorbeeld videos
           </h1>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Dit zijn shorts die we in een vergelijkbare stijl voor je kunnen
             maken. Ze laten vooral zien wat we kunnen met tempo, energie en
             kwaliteit.
           </p>
+          <p className="text-foreground/80 max-w-2xl mx-auto mt-5 leading-relaxed">
+            We maken samen content die past bij de auto en het bedrijf erachter.
+            Van het bedenken van de beelden tot het filmen en editen, we letten
+            op de details die een auto herkenbaar maken.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto">
+        {BEHIND_THE_SCENES_FILE && urls[BEHIND_THE_SCENES_FILE] && (
+          <motion.section
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-4xl mx-auto mb-20"
+          >
+            <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
+              Achter de schermen
+            </p>
+            <video
+              src={urls[BEHIND_THE_SCENES_FILE]}
+              className="w-full max-h-[420px] rounded-md bg-card object-cover"
+              controls
+              muted
+              playsInline
+              preload="metadata"
+            />
+          </motion.section>
+        )}
+
+        <div className="max-w-5xl mx-auto space-y-20 md:space-y-28">
           {videos.map((video, i) => {
             const url = urls[video.file];
             return (
-              <motion.div
+              <motion.section
                 key={video.file}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: i * 0.08 }}
+                className={`grid gap-8 md:grid-cols-[minmax(240px,320px)_1fr] md:items-center ${
+                  i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+                }`}
               >
                 <button
                   onClick={() => url && setActive(video)}
-                  className="group relative w-full rounded-xl overflow-hidden card-shadow bg-black aspect-[9/16] block"
+                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block"
                   aria-label={`${video.title} groot afspelen`}
                 >
                   {video.thumb && urls[video.thumb] ? (
@@ -111,16 +168,42 @@ const AutomotiveShorts = () => {
                       <Play size={32} className="text-primary" />
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <div className="absolute inset-0 bg-background/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="flex items-center gap-2 text-sm font-semibold text-foreground">
                       <Expand size={18} /> Groot kijken
                     </span>
                   </div>
                 </button>
-                <h3 className="font-display text-base font-semibold mt-3 text-center">
-                  {video.title}
-                </h3>
-              </motion.div>
+
+                <div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
+                    {video.category}
+                  </p>
+                  <h2 className="font-display text-3xl font-bold mb-4">
+                    {video.title}
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed max-w-xl mb-8">
+                    {video.description}
+                  </p>
+
+                  <div className="border-y border-border divide-y divide-border">
+                    {carSpecifications.map(({ label, value, icon: Icon }) => (
+                      <div
+                        key={label}
+                        className="grid grid-cols-[1fr_auto] items-center gap-4 py-3"
+                      >
+                        <span className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <Icon size={16} className="text-primary" />
+                          {label}
+                        </span>
+                        <span className="font-display text-sm font-semibold">
+                          {value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.section>
             );
           })}
         </div>
@@ -149,12 +232,12 @@ const AutomotiveShorts = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4"
             onClick={() => setActive(null)}
           >
             <button
               onClick={() => setActive(null)}
-              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Sluiten"
             >
               <X size={32} />
@@ -172,7 +255,7 @@ const AutomotiveShorts = () => {
             >
               <video
                 src={urls[active.file]}
-                className="w-full h-full rounded-xl bg-black"
+                className="w-full h-full rounded-md bg-card"
                 controls
                 autoPlay
                 playsInline
