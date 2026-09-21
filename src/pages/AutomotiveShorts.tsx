@@ -328,10 +328,10 @@ const AutomotiveShorts = () => {
                   i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <button
+                <TiltCard
                   onClick={() => url && setActive(video)}
-                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block"
-                  aria-label={`${video.title} groot afspelen`}
+                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block cursor-pointer"
+                  ariaLabel={`${video.title} groot afspelen`}
                 >
                   {video.thumb && urls[video.thumb] ? (
                     <img
