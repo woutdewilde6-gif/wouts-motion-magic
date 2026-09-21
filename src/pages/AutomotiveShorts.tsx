@@ -1,11 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useMotionTemplate,
-  animate,
-} from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
   Expand,
@@ -16,7 +10,6 @@ import {
   CalendarDays,
   Camera,
   Clapperboard,
-  ChevronsRight,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -82,109 +75,13 @@ const steps = [
   },
 ];
 
-const SwipeReveal = ({
-  children,
-  onRevealed,
-  onOpen,
-  ariaLabel,
-  className,
-}: {
-  children: React.ReactNode;
-  onRevealed?: () => void;
-  onOpen?: () => void;
-  ariaLabel?: string;
-  className?: string;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
-  const [dragging, setDragging] = useState(false);
-  const progress = useMotionValue(0);
-  const clipPath = useMotionTemplate`inset(0 0 0 calc(${progress} * 100%))`;
-  const barLeft = useMotionTemplate`calc(${progress} * 100%)`;
-
-  const setFromClientX = (clientX: number) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect || rect.width === 0) return;
-    const p = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-    progress.set(p);
-    if (p >= 0.985) {
-      setRevealed(true);
-      onRevealed?.();
-    }
-  };
-
-  const handleUp = () => {
-    setDragging(false);
-    const p = progress.get();
-    if (p > 0.55) {
-      animate(progress, 1, {
-        type: "spring",
-        stiffness: 220,
-        damping: 26,
-        onComplete: () => {
-          setRevealed(true);
-          onRevealed?.();
-        },
-      });
-    } else {
-      animate(progress, 0, { type: "spring", stiffness: 260, damping: 30 });
-    }
-  };
-
-  return (
-    <div
-      ref={ref}
-      className={`relative touch-none select-none ${className ?? ""}`}
-      role="button"
-      aria-label={ariaLabel}
-      onPointerDown={(e) => {
-        if (revealed) {
-          onOpen?.();
-          return;
-        }
-        setDragging(true);
-        ref.current?.setPointerCapture?.(e.pointerId);
-        setFromClientX(e.clientX);
-      }}
-      onPointerMove={(e) => {
-        if (dragging && !revealed) setFromClientX(e.clientX);
-      }}
-      onPointerUp={handleUp}
-      onPointerCancel={handleUp}
-    >
-      <div className={revealed ? "" : "pointer-events-none"}>{children}</div>
-
-      {!revealed && (
-        <>
-          <motion.div
-            style={{ clipPath }}
-            className="absolute inset-0 z-10 bg-card flex flex-col items-center justify-center gap-3"
-          >
-            <span className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">
-              <ChevronsRight size={18} className="text-primary animate-pulse" />
-              Swipe om te onthullen
-            </span>
-          </motion.div>
-          <motion.div
-            style={{ left: barLeft }}
-            className="absolute top-0 bottom-0 z-20 w-1 bg-primary shadow-[0_0_16px_hsl(var(--primary))]"
-          >
-            <span className="absolute top-1/2 -translate-y-1/2 -left-4 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
-              <ChevronsRight size={16} />
-            </span>
-          </motion.div>
-        </>
-      )}
-    </div>
-  );
-};
 
 
 
 const AutomotiveShorts = () => {
   const [urls, setUrls] = useState<Record<string, string>>({});
   const [active, setActive] = useState<ShortVideo | null>(null);
-  const [activeStep, setActiveStep] = useState<number | null>(0);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -307,7 +204,7 @@ const AutomotiveShorts = () => {
 
         <div className="max-w-5xl mx-auto mb-20 md:mb-28">
           <p className="text-sm text-muted-foreground mb-6 text-center">
-            Tik op een stap om te zien wat er gebeurt
+            Klik op een stap om te zien wat er gebeurt
           </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {steps.map((step, i) => {
@@ -378,10 +275,12 @@ const AutomotiveShorts = () => {
                   i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <SwipeReveal
-                  onOpen={() => url && setActive(video)}
-                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] cursor-pointer"
-                  ariaLabel={`${video.title} onthullen en groot afspelen`}
+                <motion.button
+                  onClick={() => url && setActive(video)}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 250, damping: 20 }}
+                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block cursor-pointer"
+                  aria-label={`${video.title} groot afspelen`}
                 >
                   {video.thumb && urls[video.thumb] ? (
                     <img
@@ -407,7 +306,7 @@ const AutomotiveShorts = () => {
                       <Expand size={18} /> Groot kijken
                     </span>
                   </div>
-                </SwipeReveal>
+                </motion.button>
 
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
