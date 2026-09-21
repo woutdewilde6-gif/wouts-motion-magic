@@ -145,9 +145,6 @@ const AutomotiveShorts = () => {
           className="max-w-5xl mx-auto mb-20 md:mb-28 grid gap-8 md:grid-cols-[1fr_1.08fr] md:items-center"
         >
           <div className="md:pr-6">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-5">
-              Van eerste gesprek tot upload
-            </h2>
             <div className="space-y-4 leading-relaxed">
               <p className="text-foreground font-medium">
                 Hoi, wij zijn Wout en Remco en maken social media content voor
