@@ -145,32 +145,21 @@ const AutomotiveShorts = () => {
           className="max-w-5xl mx-auto mb-20 md:mb-28 grid gap-8 md:grid-cols-[1fr_1.08fr] md:items-center"
         >
           <div className="md:pr-6">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
-              Zo werken we
-            </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-5">
               Van eerste gesprek tot upload
             </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                We beginnen met goed luisteren. Wat wil je bereiken met je
-                content: nieuwe klanten, of gewoon meer naamsbekendheid door
-                trends te volgen? Daar schrijven we de scripts op. Geef je zelf
-                input, dan gebruiken we die als basis, anders maken we alles
-                helemaal zelf.
+            <div className="space-y-4 leading-relaxed">
+              <p className="text-foreground font-medium">
+                Hoi, wij zijn Wout en Remco en maken social media content voor
+                autobedrijven.
               </p>
-              <p>
-                Daarna maken wij een upload schema. Daarin staat welke video op
-                welke dag online gaat, afgestemd op hoeveel posts je wilt. Door
-                de scripts weten we precies wat er moet gebeuren, dus zijn we op
-                de shootdag niet lang bezig. Willen jullie niet voor de camera
-                staan is dat geen probleem.
+              <p className="text-muted-foreground">
+                We bedenken de scripts, filmen de auto en editen alles tot een
+                strakke short.
               </p>
-              <p>
-                Na de shoot gaan wij zo snel mogelijk aan de slag met de edit.
-                Daarna beheren wij de social media en uploaden wij alles volgens
-                het schema zodat jullie daar geen tijd aan kwijt zijn. Jullie
-                hebben daar altijd inzicht in, dus je weet wat er wanneer komt.
+              <p className="text-muted-foreground">
+                Daarna beheren wij je social media en uploaden wij alles volgens
+                schema, zodat jullie daar geen tijd aan kwijt zijn.
               </p>
             </div>
           </div>
