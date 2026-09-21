@@ -82,51 +82,101 @@ const steps = [
   },
 ];
 
-const TiltCard = ({
+const SwipeReveal = ({
   children,
-  className,
-  onClick,
+  onRevealed,
+  onOpen,
   ariaLabel,
+  className,
 }: {
   children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
+  onRevealed?: () => void;
+  onOpen?: () => void;
   ariaLabel?: string;
+  className?: string;
 }) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const mx = useMotionValue(0.5);
-  const my = useMotionValue(0.5);
-  const rotateX = useSpring(useTransform(my, [0, 1], [6, -6]), {
-    stiffness: 200,
-    damping: 20,
-  });
-  const rotateY = useSpring(useTransform(mx, [0, 1], [-6, 6]), {
-    stiffness: 200,
-    damping: 20,
-  });
+  const ref = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const progress = useMotionValue(0);
+  const clip = useMotionTemplate`inset(0 0 0 ${useMotionTemplate`calc(${(0)}`)}`;
+  const clipPath = useMotionTemplate`inset(0 0 0 calc(${progress} * 100%))`;
+  const barLeft = useMotionTemplate`calc(${progress} * 100%)`;
+
+  const setFromClientX = (clientX: number) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect || rect.width === 0) return;
+    const p = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+    progress.set(p);
+    if (p >= 0.985) {
+      setRevealed(true);
+      onRevealed?.();
+    }
+  };
+
+  const handleUp = () => {
+    setDragging(false);
+    const p = progress.get();
+    if (p > 0.55) {
+      animate(progress, 1, {
+        type: "spring",
+        stiffness: 220,
+        damping: 26,
+        onComplete: () => {
+          setRevealed(true);
+          onRevealed?.();
+        },
+      });
+    } else {
+      animate(progress, 0, { type: "spring", stiffness: 260, damping: 30 });
+    }
+  };
 
   return (
-    <motion.button
+    <div
       ref={ref}
-      onClick={onClick}
+      className={`relative touch-none select-none ${className ?? ""}`}
+      role="button"
       aria-label={ariaLabel}
-      style={{ rotateX, rotateY, transformPerspective: 800 }}
-      onMouseMove={(e) => {
-        const rect = ref.current?.getBoundingClientRect();
-        if (!rect) return;
-        mx.set((e.clientX - rect.left) / rect.width);
-        my.set((e.clientY - rect.top) / rect.height);
+      onPointerDown={(e) => {
+        if (revealed) {
+          onOpen?.();
+          return;
+        }
+        setDragging(true);
+        (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+        setFromClientX(e.clientX);
       }}
-      onMouseLeave={() => {
-        mx.set(0.5);
-        my.set(0.5);
+      onPointerMove={(e) => {
+        if (dragging && !revealed) setFromClientX(e.clientX);
       }}
-      whileHover={{ scale: 1.03 }}
-      transition={{ type: "spring", stiffness: 250, damping: 20 }}
-      className={className}
+      onPointerUp={handleUp}
+      onPointerCancel={handleUp}
     >
-      {children}
-    </motion.button>
+      <div className={revealed ? "" : "pointer-events-none"}>{children}</div>
+
+      {!revealed && (
+        <>
+          <motion.div
+            style={{ clipPath }}
+            className="absolute inset-0 z-10 bg-card flex flex-col items-center justify-center gap-3"
+          >
+            <span className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">
+              <ChevronsRight size={18} className="text-primary animate-pulse" />
+              Swipe om te onthullen
+            </span>
+          </motion.div>
+          <motion.div
+            style={{ left: barLeft }}
+            className="absolute top-0 bottom-0 z-20 w-1 bg-primary shadow-[0_0_16px_hsl(var(--primary))]"
+          >
+            <span className="absolute top-1/2 -translate-y-1/2 -left-4 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
+              <ChevronsRight size={16} />
+            </span>
+          </motion.div>
+        </>
+      )}
+    </div>
   );
 };
 
