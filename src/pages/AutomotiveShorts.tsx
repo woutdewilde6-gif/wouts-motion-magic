@@ -108,19 +108,28 @@ const AutomotiveShorts = () => {
               Zo werken we
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-5">
-              De auto en het bedrijf erachter in beeld
+              Van eerste gesprek tot upload
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                We maken samen content die past bij de auto en bij het bedrijf.
-                Eerst bespreken we welke uitstraling je zoekt en welke details
-                belangrijk zijn. Daarna bedenken we de beelden en gaan we op
-                locatie aan de slag.
+                We beginnen met goed luisteren. Wat wil je bereiken met je
+                content: nieuwe klanten, of gewoon meer naamsbekendheid door
+                trends te volgen? Daar schrijven we de scripts op. Geef je zelf
+                input, dan gebruiken we die als basis, anders maken we alles
+                helemaal zelf.
               </p>
               <p>
-                Tijdens het filmen letten we op de lijnen, beweging en kenmerken
-                van de auto. Daarna brengen we alles samen tot een korte video
-                die duidelijk laat zien waar het om draait.
+                Daarna maken we een rooster. Daarin staat welke video op welke
+                dag online gaat, afgestemd op hoeveel posts je wilt. Op de
+                shootdag filmen we alles in één keer, zodat je er zelf weinig
+                tijd aan kwijt bent. Wil je niet voor de camera staan, dan
+                stappen wij erin.
+              </p>
+              <p>
+                Thuis gaan we meteen aan de slag met de edit. Daarna hoeven
+                jullie niets meer te doen: wij nemen het beheer van je social
+                media over en uploaden alles volgens het rooster. Dat delen we
+                met je, dus je weet altijd wat er wanneer online komt.
               </p>
             </div>
           </div>
