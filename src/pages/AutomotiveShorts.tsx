@@ -10,6 +10,7 @@ import {
   CalendarDays,
   Camera,
   Clapperboard,
+  ArrowRight,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -145,20 +146,28 @@ const AutomotiveShorts = () => {
           className="max-w-5xl mx-auto mb-20 md:mb-28 grid gap-8 md:grid-cols-[1fr_1.08fr] md:items-center"
         >
           <div className="md:pr-6">
-            <div className="space-y-4 leading-relaxed">
-              <p className="text-foreground font-medium">
-                Hoi, wij zijn Wout en Remco en maken social media content voor
-                autobedrijven.
-              </p>
-              <p className="text-muted-foreground">
-                We bedenken de scripts, filmen de auto en editen alles tot een
-                strakke short.
-              </p>
-              <p className="text-muted-foreground">
-                Daarna beheren wij je social media en uploaden wij alles volgens
-                schema, zodat jullie daar geen tijd aan kwijt zijn.
-              </p>
-            </div>
+            <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-4">
+              Wout en Remco
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight mb-5">
+              Social media content voor{" "}
+              <span className="text-gradient">autobedrijven</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Wij bedenken de scripts, filmen de auto en editen alles tot een
+              strakke short. Daarna houden we je social media draaiende, zodat
+              jullie daar geen tijd aan kwijt zijn.
+            </p>
+            <a
+              href="/"
+              className="group inline-flex items-center gap-2 font-display text-sm font-semibold text-primary"
+            >
+              Bekijk verder op de website
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-1"
+              />
+            </a>
           </div>
 
           <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-card card-shadow">
