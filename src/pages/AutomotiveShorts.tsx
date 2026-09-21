@@ -134,6 +134,7 @@ const TiltCard = ({
 const AutomotiveShorts = () => {
   const [urls, setUrls] = useState<Record<string, string>>({});
   const [active, setActive] = useState<ShortVideo | null>(null);
+  const [activeStep, setActiveStep] = useState<number | null>(0);
 
   useEffect(() => {
     const load = async () => {
@@ -253,6 +254,56 @@ const AutomotiveShorts = () => {
             </div>
           </div>
         </motion.section>
+
+        <div className="max-w-5xl mx-auto mb-20 md:mb-28">
+          <p className="text-sm text-muted-foreground mb-6 text-center">
+            Tik op een stap om te zien wat er gebeurt
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            {steps.map((step, i) => {
+              const Icon = step.icon;
+              const isActive = activeStep === i;
+              return (
+                <button
+                  key={step.title}
+                  onClick={() => setActiveStep(isActive ? null : i)}
+                  className={`group text-left rounded-md border p-4 transition-all duration-300 ${
+                    isActive
+                      ? "border-primary bg-card card-shadow"
+                      : "border-border bg-card/40 hover:border-primary/50 hover:bg-card/80"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md transition-colors ${
+                        isActive
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                      }`}
+                    >
+                      <Icon size={16} />
+                    </span>
+                    <span className="font-display text-sm font-semibold">
+                      {step.title}
+                    </span>
+                  </div>
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.p
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden text-xs text-muted-foreground leading-relaxed"
+                      >
+                        {step.text}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         <div className="max-w-5xl mx-auto mb-10 md:mb-14">
           <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
