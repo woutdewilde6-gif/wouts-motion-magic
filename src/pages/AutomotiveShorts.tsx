@@ -71,7 +71,7 @@ const steps = [
   {
     icon: Clapperboard,
     title: "Edit en upload",
-    text: "Na de shoot gaan wij zo snel mogelijk aan de slag met de edit. Daarna beheren wij de social media en uploaden wij alles volgens het schema, dus jullie zijn er zelf geen tijd aan kwijt.",
+    text: "Na de shoot gaan wij zo snel mogelijk aan de slag met de edit. Daarna beheren wij de social media en uploaden wij alles volgens het schema zodat jullie daar geen tijd aan kwijt zijn.",
   },
 ];
 
@@ -169,7 +169,7 @@ const AutomotiveShorts = () => {
               <p>
                 Na de shoot gaan wij zo snel mogelijk aan de slag met de edit.
                 Daarna beheren wij de social media en uploaden wij alles volgens
-                het schema, dus jullie zijn er zelf geen tijd aan kwijt. Jullie
+                het schema zodat jullie daar geen tijd aan kwijt zijn. Jullie
                 hebben daar altijd inzicht in, dus je weet wat er wanneer komt.
               </p>
             </div>
