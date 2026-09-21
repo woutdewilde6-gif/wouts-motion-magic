@@ -60,8 +60,8 @@ const steps = [
   },
   {
     icon: CalendarDays,
-    title: "Het rooster",
-    text: "Samen maken we een rooster met welke video op welke dag online gaat. Dat delen we, dus je weet altijd wat er wanneer komt.",
+    title: "Upload schema",
+    text: "Wij maken een upload schema met welke video op welke dag online gaat. Jullie hebben daar natuurlijk inzicht in, dus je weet altijd wat er wanneer komt.",
   },
   {
     icon: Camera,
@@ -71,7 +71,7 @@ const steps = [
   {
     icon: Clapperboard,
     title: "Edit en upload",
-    text: "Thuis gaan we meteen aan de slag met de edit. Daarna beheren wij je social media en uploaden alles volgens het rooster.",
+    text: "Thuis gaan we meteen aan de slag met de edit. Daarna beheren wij je social media en uploaden alles volgens het schema.",
   },
 ];
 
@@ -160,8 +160,8 @@ const AutomotiveShorts = () => {
                 helemaal zelf.
               </p>
               <p>
-                Daarna maken we een rooster. Daarin staat welke video op welke
-                dag online gaat, afgestemd op hoeveel posts je wilt. Op de
+                Daarna maken wij een upload schema. Daarin staat welke video op
+                welke dag online gaat, afgestemd op hoeveel posts je wilt. Op de
                 shootdag filmen we alles in één keer, zodat je er zelf weinig
                 tijd aan kwijt bent. Wil je niet voor de camera staan, dan
                 stappen wij erin.
@@ -169,8 +169,8 @@ const AutomotiveShorts = () => {
               <p>
                 Thuis gaan we meteen aan de slag met de edit. Daarna hoeven
                 jullie niets meer te doen: wij nemen het beheer van je social
-                media over en uploaden alles volgens het rooster. Dat delen we
-                met je, dus je weet altijd wat er wanneer online komt.
+                media over en uploaden alles volgens het schema. Jullie hebben
+                daar altijd inzicht in, dus je weet wat er wanneer online komt.
               </p>
             </div>
           </div>
