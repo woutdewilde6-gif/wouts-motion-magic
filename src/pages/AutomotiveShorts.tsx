@@ -66,7 +66,7 @@ const steps = [
   {
     icon: Camera,
     title: "De shootdag",
-    text: "In één dag filmen we alles. Jij bent er weinig tijd aan kwijt, en wil je niet voor de camera staan, dan stappen wij erin.",
+    text: "Door de scripts weten we precies wat er moet gebeuren en schieten we alles in korte tijd. Willen jullie niet voor de camera staan, dan doen wij dat zelf.",
   },
   {
     icon: Clapperboard,
@@ -161,10 +161,10 @@ const AutomotiveShorts = () => {
               </p>
               <p>
                 Daarna maken wij een upload schema. Daarin staat welke video op
-                welke dag online gaat, afgestemd op hoeveel posts je wilt. Op de
-                shootdag filmen we alles in één keer, zodat je er zelf weinig
-                tijd aan kwijt bent. Wil je niet voor de camera staan, dan
-                stappen wij erin.
+                welke dag online gaat, afgestemd op hoeveel posts je wilt. Door
+                de scripts weten we precies wat er moet gebeuren, dus zijn we op
+                de shootdag niet lang bezig. Willen jullie niet voor de camera
+                staan, dan doen wij dat zelf.
               </p>
               <p>
                 Thuis gaan we meteen aan de slag met de edit. Daarna hoeven
