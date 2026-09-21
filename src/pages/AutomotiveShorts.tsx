@@ -90,7 +90,7 @@ const AutomotiveShorts = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-10 md:mb-12"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-display mb-3">
             Automotive Shorts
@@ -103,32 +103,70 @@ const AutomotiveShorts = () => {
             maken. Ze laten vooral zien wat we kunnen met tempo, energie en
             kwaliteit.
           </p>
-          <p className="text-foreground/80 max-w-2xl mx-auto mt-5 leading-relaxed">
-            We maken samen content die past bij de auto en het bedrijf erachter.
-            Van het bedenken van de beelden tot het filmen en editen, we letten
-            op de details die een auto herkenbaar maken.
-          </p>
         </motion.div>
 
-        {BEHIND_THE_SCENES_FILE && urls[BEHIND_THE_SCENES_FILE] && (
-          <motion.section
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto mb-20"
-          >
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-5xl mx-auto mb-20 md:mb-28 grid gap-8 md:grid-cols-[1fr_1.08fr] md:items-center"
+        >
+          <div className="md:pr-6">
             <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
-              Achter de schermen
+              Zo werken we
             </p>
-            <video
-              src={urls[BEHIND_THE_SCENES_FILE]}
-              className="w-full max-h-[420px] rounded-md bg-card object-cover"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-            />
-          </motion.section>
-        )}
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-5">
+              De auto en het bedrijf erachter in beeld
+            </h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                We maken samen content die past bij de auto en bij het bedrijf.
+                Eerst bespreken we welke uitstraling je zoekt en welke details
+                belangrijk zijn. Daarna bedenken we de beelden en gaan we op
+                locatie aan de slag.
+              </p>
+              <p>
+                Tijdens het filmen letten we op de lijnen, beweging en kenmerken
+                van de auto. Daarna brengen we alles samen tot een korte video
+                die duidelijk laat zien waar het om draait.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-card card-shadow">
+            {BEHIND_THE_SCENES_FILE && urls[BEHIND_THE_SCENES_FILE] ? (
+              <video
+                src={urls[BEHIND_THE_SCENES_FILE]}
+                className="h-full w-full object-cover"
+                controls
+                muted
+                playsInline
+                preload="metadata"
+              />
+            ) : urls["short-2-thumb.png"] ? (
+              <img
+                src={urls["short-2-thumb.png"]}
+                alt="Achter de schermen tijdens het filmen van de Opel Corsa"
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <div className="h-full w-full flex items-center justify-center">
+                <Car size={40} className="text-primary" />
+              </div>
+            )}
+            <div className="absolute left-4 bottom-4 rounded-md bg-background/85 px-3 py-2 text-sm font-display font-semibold backdrop-blur-md">
+              Achter de schermen
+            </div>
+          </div>
+        </motion.section>
+
+        <div className="max-w-5xl mx-auto mb-10 md:mb-14">
+          <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
+            De voorbeelden
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold">
+            Twee manieren van filmen
+          </h2>
+        </div>
 
         <div className="max-w-5xl mx-auto space-y-20 md:space-y-28">
           {videos.map((video, i) => {
