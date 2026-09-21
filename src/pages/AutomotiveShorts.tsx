@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Expand, Play, Gauge, CalendarDays, Palette, Car } from "lucide-react";
+import { X, Expand, Play, Car } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface ShortVideo {
@@ -17,7 +17,7 @@ const videos: ShortVideo[] = [
     title: "Short 1",
     category: "Professionele camera",
     description:
-      "Een strakke short waarin de lijnen en details van de auto centraal staan. Gefilmd met een professionele camera voor een verzorgde uitstraling.",
+      "Een strakke short waarin de lijnen en details van de auto centraal staan. Gefilmd met een professionele camera, voor een premium uitstraling.",
     file: "Short 1.mp4",
     format: "portrait",
     thumb: "short-1-thumb.png",
@@ -37,13 +37,6 @@ const BUCKET = "automotive-shorts";
 // Vul hier later de exacte bestandsnaam uit de opslag in, bijvoorbeeld "achter de schermen.mp4".
 const BEHIND_THE_SCENES_FILE = "";
 
-const carSpecifications = [
-  { label: "Model", value: "Opel Corsa", icon: Car },
-  { label: "Motor", value: "1.2 Turbo", icon: Gauge },
-  { label: "Bouwjaar", value: "2024", icon: CalendarDays },
-  { label: "Vermogen", value: "101 pk", icon: Gauge },
-  { label: "Kleur", value: "Wit", icon: Palette },
-];
 
 const AutomotiveShorts = () => {
   const [urls, setUrls] = useState<Record<string, string>>({});
@@ -220,26 +213,9 @@ const AutomotiveShorts = () => {
                   <h2 className="font-display text-3xl font-bold mb-4">
                     {video.title}
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed max-w-xl mb-8">
+                  <p className="text-muted-foreground leading-relaxed max-w-xl">
                     {video.description}
                   </p>
-
-                  <div className="border-y border-border divide-y divide-border">
-                    {carSpecifications.map(({ label, value, icon: Icon }) => (
-                      <div
-                        key={label}
-                        className="grid grid-cols-[1fr_auto] items-center gap-4 py-3"
-                      >
-                        <span className="flex items-center gap-3 text-sm text-muted-foreground">
-                          <Icon size={16} className="text-primary" />
-                          {label}
-                        </span>
-                        <span className="font-display text-sm font-semibold">
-                          {value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </motion.section>
             );
