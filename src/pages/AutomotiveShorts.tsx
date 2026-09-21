@@ -82,35 +82,31 @@ const steps = [
   },
 ];
 
-const SwipeReveal = ({
-  children,
-  onRevealed,
-  onOpen,
-  ariaLabel,
-  className,
+const StepsSwipe = ({
+  activeStep,
+  setActiveStep,
 }: {
-  children: React.ReactNode;
-  onRevealed?: () => void;
-  onOpen?: () => void;
-  ariaLabel?: string;
-  className?: string;
+  activeStep: number | null;
+  setActiveStep: (i: number | null) => void;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
   const [dragging, setDragging] = useState(false);
+  const [done, setDone] = useState(false);
+  const [count, setCount] = useState(1);
   const progress = useMotionValue(0);
-  const clipPath = useMotionTemplate`inset(0 0 0 calc(${progress} * 100%))`;
-  const barLeft = useMotionTemplate`calc(${progress} * 100%)`;
+  const barLeft = useMotionTemplate`calc(${progress} * 100% - 1px)`;
 
   const setFromClientX = (clientX: number) => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect || rect.width === 0) return;
     const p = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
     progress.set(p);
-    if (p >= 0.985) {
-      setRevealed(true);
-      onRevealed?.();
-    }
+    const n = Math.min(
+      steps.length,
+      Math.max(1, Math.floor(p * steps.length) + 1)
+    );
+    setCount(n);
+    if (p >= 0.98) setDone(true);
   };
 
   const handleUp = () => {
@@ -122,58 +118,118 @@ const SwipeReveal = ({
         stiffness: 220,
         damping: 26,
         onComplete: () => {
-          setRevealed(true);
-          onRevealed?.();
+          setCount(steps.length);
+          setDone(true);
         },
       });
     } else {
       animate(progress, 0, { type: "spring", stiffness: 260, damping: 30 });
+      setCount(1);
     }
   };
 
   return (
     <div
       ref={ref}
-      className={`relative touch-none select-none ${className ?? ""}`}
-      role="button"
-      aria-label={ariaLabel}
-      onPointerDown={(e) => {
-        if (revealed) {
-          onOpen?.();
-          return;
+      className={`relative select-none ${done ? "" : "touch-none cursor-ew-resize"}`}
+      role="slider"
+      aria-label="Doorloop de stappen met een swipe"
+      aria-valuemin={1}
+      aria-valuemax={steps.length}
+      aria-valuenow={count}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowRight") {
+          const next = Math.min(steps.length, count + 1);
+          setCount(next);
+          progress.set(next / steps.length);
+          if (next === steps.length) setDone(true);
         }
+        if (e.key === "ArrowLeft" && !done) {
+          const prev = Math.max(1, count - 1);
+          setCount(prev);
+          progress.set(prev / steps.length);
+        }
+      }}
+      onPointerDown={(e) => {
+        if (done) return;
         setDragging(true);
         ref.current?.setPointerCapture?.(e.pointerId);
         setFromClientX(e.clientX);
       }}
       onPointerMove={(e) => {
-        if (dragging && !revealed) setFromClientX(e.clientX);
+        if (dragging && !done) setFromClientX(e.clientX);
       }}
       onPointerUp={handleUp}
       onPointerCancel={handleUp}
     >
-      <div className={revealed ? "" : "pointer-events-none"}>{children}</div>
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {steps.map((step, i) => {
+          const Icon = step.icon;
+          const visible = i < count;
+          const isActive = activeStep === i;
+          return (
+            <motion.button
+              key={step.title}
+              onClick={() => {
+                if (!visible) return;
+                setActiveStep(isActive ? null : i);
+              }}
+              animate={{
+                opacity: visible ? 1 : 0.15,
+                scale: visible ? 1 : 0.96,
+                filter: visible ? "blur(0px)" : "blur(3px)",
+              }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              className={`group text-left rounded-md border p-4 transition-colors duration-300 ${
+                !visible ? "pointer-events-none" : ""
+              } ${
+                isActive
+                  ? "border-primary bg-card card-shadow"
+                  : "border-border bg-card/40 hover:border-primary/50 hover:bg-card/80"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-primary/10 text-primary group-hover:bg-primary/20"
+                  }`}
+                >
+                  <Icon size={16} />
+                </span>
+                <span className="font-display text-sm font-semibold">
+                  {step.title}
+                </span>
+              </div>
+              <AnimatePresence initial={false}>
+                {isActive && (
+                  <motion.p
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden text-xs text-muted-foreground leading-relaxed"
+                  >
+                    {step.text}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          );
+        })}
+      </div>
 
-      {!revealed && (
-        <>
-          <motion.div
-            style={{ clipPath }}
-            className="absolute inset-0 z-10 bg-card flex flex-col items-center justify-center gap-3"
-          >
-            <span className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">
-              <ChevronsRight size={18} className="text-primary animate-pulse" />
-              Swipe om te onthullen
-            </span>
-          </motion.div>
-          <motion.div
-            style={{ left: barLeft }}
-            className="absolute top-0 bottom-0 z-20 w-1 bg-primary shadow-[0_0_16px_hsl(var(--primary))]"
-          >
-            <span className="absolute top-1/2 -translate-y-1/2 -left-4 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
-              <ChevronsRight size={16} />
-            </span>
-          </motion.div>
-        </>
+      {!done && (
+        <motion.div
+          style={{ left: barLeft }}
+          className="pointer-events-none absolute -top-3 -bottom-3 z-20 w-0.5 bg-primary shadow-[0_0_16px_hsl(var(--primary))]"
+        >
+          <span className="absolute -top-9 left-1/2 -translate-x-1/2 flex items-center gap-1.5 whitespace-nowrap rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-lg">
+            <ChevronsRight size={14} className="animate-pulse" />
+            Swipe om de stappen te doorlopen
+          </span>
+        </motion.div>
       )}
     </div>
   );
