@@ -192,6 +192,9 @@ const AutomotiveShorts = () => {
         </motion.section>
 
         <div className="max-w-5xl mx-auto mb-20 md:mb-28">
+          <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3 text-center">
+            Zo werken we
+          </p>
           <p className="text-sm text-muted-foreground mb-6 text-center">
             Klik op een stap om te zien wat er gebeurt
           </p>
