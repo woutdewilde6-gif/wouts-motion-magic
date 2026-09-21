@@ -66,7 +66,7 @@ const steps = [
   {
     icon: Camera,
     title: "De shootdag",
-    text: "Door de scripts weten we precies wat er moet gebeuren en schieten we alles in korte tijd. Willen jullie niet voor de camera staan, dan doen wij dat zelf.",
+    text: "Door de scripts weten we precies wat er moet gebeuren en schieten we alles in korte tijd. Willen jullie niet voor de camera staan? Geen probleem, dan doen wij dat zelf.",
   },
   {
     icon: Clapperboard,
@@ -164,7 +164,7 @@ const AutomotiveShorts = () => {
                 welke dag online gaat, afgestemd op hoeveel posts je wilt. Door
                 de scripts weten we precies wat er moet gebeuren, dus zijn we op
                 de shootdag niet lang bezig. Willen jullie niet voor de camera
-                staan, dan doen wij dat zelf.
+                staan? Geen probleem, dan doen wij dat zelf.
               </p>
               <p>
                 Thuis gaan we meteen aan de slag met de edit. Daarna hoeven
