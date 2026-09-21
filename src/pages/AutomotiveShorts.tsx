@@ -3,8 +3,8 @@ import {
   motion,
   AnimatePresence,
   useMotionValue,
-  useSpring,
-  useTransform,
+  useMotionTemplate,
+  animate,
 } from "framer-motion";
 import {
   X,
@@ -16,6 +16,7 @@ import {
   CalendarDays,
   Camera,
   Clapperboard,
+  ChevronsRight,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
