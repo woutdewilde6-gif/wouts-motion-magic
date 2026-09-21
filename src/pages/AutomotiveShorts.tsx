@@ -56,7 +56,7 @@ const steps = [
   {
     icon: FileText,
     title: "De scripts",
-    text: "Wij schrijven de scripts op het doel. Jouw input gebruiken we als basis, maar we kunnen het ook helemaal zelf verzinnen.",
+    text: "Wij schrijven de scripts op het doel. Jouw input gebruiken we als basis, maar we kunnen het ook helemaal zelf bedenken.",
   },
   {
     icon: CalendarDays,
