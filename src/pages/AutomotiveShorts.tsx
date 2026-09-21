@@ -251,14 +251,24 @@ const AutomotiveShorts = () => {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto mb-10 md:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          className="max-w-5xl mx-auto mb-10 md:mb-14"
+        >
           <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
-            De voorbeelden
+            Automotive Shorts
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold">
-            Twee manieren van filmen
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            Voorbeeld videos
           </h2>
-        </div>
+          <p className="text-muted-foreground max-w-2xl leading-relaxed">
+            Dit zijn shorts die we in een vergelijkbare stijl voor je kunnen
+            maken. Ze laten vooral zien wat we kunnen met tempo, energie en
+            kwaliteit.
+          </p>
+        </motion.div>
 
         <div className="max-w-5xl mx-auto space-y-20 md:space-y-28">
           {videos.map((video, i) => {
