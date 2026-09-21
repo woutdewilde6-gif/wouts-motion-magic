@@ -99,7 +99,6 @@ const SwipeReveal = ({
   const [revealed, setRevealed] = useState(false);
   const [dragging, setDragging] = useState(false);
   const progress = useMotionValue(0);
-  const clip = useMotionTemplate`inset(0 0 0 ${useMotionTemplate`calc(${(0)}`)}`;
   const clipPath = useMotionTemplate`inset(0 0 0 calc(${progress} * 100%))`;
   const barLeft = useMotionTemplate`calc(${progress} * 100%)`;
 
