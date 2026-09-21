@@ -422,7 +422,7 @@ const AutomotiveShorts = () => {
                       <Expand size={18} /> Groot kijken
                     </span>
                   </div>
-                </SwipeReveal>
+                </motion.button>
 
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-3">
