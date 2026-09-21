@@ -1,11 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useMotionTemplate,
-  animate,
-} from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
   Expand,
@@ -16,7 +10,6 @@ import {
   CalendarDays,
   Camera,
   Clapperboard,
-  ChevronsRight,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -88,7 +81,7 @@ const steps = [
 const AutomotiveShorts = () => {
   const [urls, setUrls] = useState<Record<string, string>>({});
   const [active, setActive] = useState<ShortVideo | null>(null);
-  const [activeStep, setActiveStep] = useState<number | null>(0);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
 
   useEffect(() => {
     const load = async () => {
