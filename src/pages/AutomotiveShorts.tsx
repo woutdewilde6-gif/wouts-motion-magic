@@ -247,9 +247,9 @@ const AutomotiveShorts = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="max-w-5xl mx-auto mb-10 md:mb-14"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <p className="text-sm uppercase tracking-[0.2em] text-primary font-display mb-4">
             Voorbeeld videos
-          </h2>
+          </p>
           <p className="text-muted-foreground max-w-2xl leading-relaxed">
             Dit zijn shorts die we in een vergelijkbare stijl voor je kunnen
             maken. Ze laten vooral zien wat we kunnen met tempo, energie en
