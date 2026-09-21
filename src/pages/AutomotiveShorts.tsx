@@ -362,53 +362,10 @@ const AutomotiveShorts = () => {
         </motion.section>
 
         <div className="max-w-5xl mx-auto mb-20 md:mb-28">
-          <p className="text-sm text-muted-foreground mb-6 text-center">
-            Tik op een stap om te zien wat er gebeurt
+          <p className="text-sm text-muted-foreground mb-10 text-center">
+            Sleep van links naar rechts om de stappen te doorlopen
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            {steps.map((step, i) => {
-              const Icon = step.icon;
-              const isActive = activeStep === i;
-              return (
-                <button
-                  key={step.title}
-                  onClick={() => setActiveStep(isActive ? null : i)}
-                  className={`group text-left rounded-md border p-4 transition-all duration-300 ${
-                    isActive
-                      ? "border-primary bg-card card-shadow"
-                      : "border-border bg-card/40 hover:border-primary/50 hover:bg-card/80"
-                  }`}
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md transition-colors ${
-                        isActive
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-primary/10 text-primary group-hover:bg-primary/20"
-                      }`}
-                    >
-                      <Icon size={16} />
-                    </span>
-                    <span className="font-display text-sm font-semibold">
-                      {step.title}
-                    </span>
-                  </div>
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.p
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden text-xs text-muted-foreground leading-relaxed"
-                      >
-                        {step.text}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </button>
-              );
-            })}
-          </div>
+          <StepsSwipe activeStep={activeStep} setActiveStep={setActiveStep} />
         </div>
 
         <div className="max-w-5xl mx-auto mb-10 md:mb-14">
@@ -434,10 +391,12 @@ const AutomotiveShorts = () => {
                   i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <SwipeReveal
-                  onOpen={() => url && setActive(video)}
-                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] cursor-pointer"
-                  ariaLabel={`${video.title} onthullen en groot afspelen`}
+                <motion.button
+                  onClick={() => url && setActive(video)}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 250, damping: 20 }}
+                  className="group relative w-full max-w-[290px] mx-auto rounded-md overflow-hidden card-shadow bg-card aspect-[9/16] block cursor-pointer"
+                  aria-label={`${video.title} groot afspelen`}
                 >
                   {video.thumb && urls[video.thumb] ? (
                     <img
