@@ -10,7 +10,7 @@ const Hero = () => {
   const [muted, setMuted] = useState(true);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="cinematic-hero relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background — video or image */}
       <div className="absolute inset-0">
         {HERO_VIDEO_URL ? (
@@ -58,7 +58,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 text-foreground"
         >
           Van idee
           <br />
