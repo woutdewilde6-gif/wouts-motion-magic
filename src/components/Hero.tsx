@@ -10,7 +10,7 @@ const Hero = () => {
   const [muted, setMuted] = useState(true);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="cinematic-hero relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background — video or image */}
       <div className="absolute inset-0">
         {HERO_VIDEO_URL ? (
