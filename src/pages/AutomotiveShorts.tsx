@@ -13,6 +13,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface ShortVideo {
   title: string;
@@ -112,12 +113,15 @@ const AutomotiveShorts = () => {
           <a href="/" className="font-display text-xl font-bold text-gradient">
             DE WILDE MEDIA
           </a>
-          <a
-            href="/#contact"
-            className="px-5 py-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-          >
-            Neem contact op
-          </a>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href="/#contact"
+              className="hidden sm:inline-flex px-5 py-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Neem contact op
+            </a>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
