@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, Eye, Heart, TrendingUp } from "lucide-react";
-import portfolio1 from "@/assets/portfolio-1.jpg";
+import epilepsieLoopThumb from "@/assets/portfolio-epilepsie-loop.jpg.asset.json";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
 import portfolio4 from "@/assets/portfolio-4.jpg";
@@ -28,7 +28,7 @@ const projects: {
   stats?: ProjectStats;
 }[] = [
   {
-    img: portfolio1,
+    img: epilepsieLoopThumb.url,
     title: "Epilepsie Loop Deventer AfterMovie 2026",
     category: "Evenement",
     videoUrl: "https://vimeo.com/1238401006",
