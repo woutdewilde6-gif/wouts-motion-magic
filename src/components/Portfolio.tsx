@@ -29,12 +29,11 @@ const projects: {
 }[] = [
   {
     img: portfolio1,
-    title: "Steven Grosveld",
-    category: "Entertainment",
-    videoUrl: "https://youtu.be/kJ48LtGEmgY?si=YosH9h2KwVQkpvok",
+    title: "Epilepsie Loop Deventer AfterMovie 2026",
+    category: "Evenement",
+    videoUrl: "https://vimeo.com/1238401006",
     format: "landscape",
-    services: ["Editen"],
-    stats: { views: "11.720", likes: "274", exposure: 2.5 },
+    services: ["Editen", "Filmen"],
   },
   {
     img: portfolio3,
