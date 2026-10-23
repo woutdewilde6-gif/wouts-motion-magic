@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, ChevronDown, Volume2, VolumeX } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBgAsset from "@/assets/hero-bg.webp.asset.json";
 
 // Set your hero background video URL here (YouTube embed, mp4 URL, or leave empty for image fallback)
 const HERO_VIDEO_URL = "";
@@ -33,10 +33,10 @@ const Hero = () => {
           </>
         ) : (
           <img
-            src={heroBg}
-            alt="De Wilde Media Producties — filming on set"
-            width={1920}
-            height={1080}
+            src={heroBgAsset.url}
+            alt="Wout filmt met een professionele camera in het veld"
+            width={1824}
+            height={1216}
             className="w-full h-full object-cover"
           />
         )}
